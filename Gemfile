@@ -47,4 +47,4 @@ end
 
 gem 'rails_12factor', group: :production
 
-ruby "2.3.5"
+ruby "2.5.7"
