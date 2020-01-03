@@ -1,0 +1,46 @@
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('https://github.com/abemsi/BookSwap/blob/navbar/public/images/reading.jpg?raw=true');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#about {
+  
+  background-color: #f8f9fa;
+}
+
+#how {
+  height: 600px;
+  background-color: #064B7E;
+}
+
+#why {
+  height: 650px;
+  background-image: url('https://github.com/abemsi/BookSwap/blob/navbar/public/images/swap.jpg?raw=true');
+  background-size: cover;
+  background-position: center;
+}
+
+.features-icons {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  .features-icons-item {
+    max-width: 20rem;
+    .features-icons-icon {
+      height: 7rem;
+      i {
+        font-size: 4.5rem;
+      }
+    }
+    &:hover {
+      .features-icons-icon {
+        i {
+          font-size: 5rem;
+        }
+      }
+    }
+  }
+}
