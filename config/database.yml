@@ -21,8 +21,8 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   host: localhost
-  username: amybemister
-  password: book
+  username: <%= ENV["username"] %>
+  password: <%= ENV["password"] %>
 
 development:
   <<: *default

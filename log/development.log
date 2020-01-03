@@ -274,6 +274,21 @@ Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0
 Processing by Rails::WelcomeController#index as HTML
   Rendered /home/vagrant/.rvm/gems/ruby-2.3.5/gems/railties-4.2.6/lib/rails/templates/rails/welcome/index.html.erb (5.7ms)
 Completed 200 OK in 50ms (Views: 33.6ms | ActiveRecord: 0.0ms)
+<<<<<<< HEAD
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'chats'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+=======
 
 
 Started GET "/" for 10.0.2.2 at 2019-12-20 23:09:12 +0000
@@ -421,6 +436,7 @@ Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0
 Processing by PagesController#home as HTML
   Rendered pages/home.html within layouts/application (1.0ms)
 Completed 200 OK in 104ms (Views: 101.0ms | ActiveRecord: 0.0ms)
+<<<<<<< HEAD
 
 
 Started GET "/" for 10.0.2.2 at 2020-01-02 19:39:41 +0000
@@ -2794,3 +2810,6 @@ Processing by PagesController#home as HTML
   Rendered pages/home.html.erb within layouts/application (0.5ms)
   Rendered layouts/_top_nav.html.erb (0.0ms)
 Completed 200 OK in 571ms (Views: 570.5ms | ActiveRecord: 0.0ms)
+=======
+>>>>>>> 5ce1080d2f26886c4280148de1d159cb9eb5e97f
+>>>>>>> e836bbc2ea4a8cdcda7884ffb940c7f9e721f359

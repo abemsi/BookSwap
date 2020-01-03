@@ -104,6 +104,14 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+<<<<<<< HEAD
+=======
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
+>>>>>>> e836bbc2ea4a8cdcda7884ffb940c7f9e721f359
     railties (4.2.8)
       actionpack (= 4.2.8)
       activesupport (= 4.2.8)
@@ -136,8 +144,7 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    spring (2.0.2)
-      activesupport (>= 4.2)
+    spring (2.1.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -172,6 +179,10 @@ DEPENDENCIES
   jquery-rails
   pg (~> 0.15)
   rails (= 4.2.8)
+<<<<<<< HEAD
+=======
+  rails_12factor
+>>>>>>> e836bbc2ea4a8cdcda7884ffb940c7f9e721f359
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
@@ -179,5 +190,8 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 
+RUBY VERSION
+   ruby 2.5.7p206
+
 BUNDLED WITH
-   1.16.1
+   1.17.3
