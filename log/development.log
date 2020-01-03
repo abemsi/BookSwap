@@ -1,66 +1,24 @@
 
 
-Started GET "/" for 10.0.2.2 at 2020-01-03 18:07:32 +0000
+Started GET "/" for 10.0.2.2 at 2020-01-03 18:21:58 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_top_nav.html.erb (0.3ms)
+Completed 200 OK in 3338ms (Views: 3325.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/homepage.self-d9bc113feca3b60943d93236c49f03f79519a3ba385fb747166b83e5adb8238a.css?body=1" for 10.0.2.2 at 2020-01-03 18:22:02 +0000
 Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
 
-PG::ConnectionBad (fe_sendauth: no password supplied
-):
-  activerecord (4.2.8) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
-  activerecord (4.2.8) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
-  activerecord (4.2.8) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
-  activerecord (4.2.8) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
-  activerecord (4.2.8) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
-  activerecord (4.2.8) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
-  activerecord (4.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
-  activerecord (4.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
-  activerecord (4.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
-  activerecord (4.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
-  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/monitor.rb:235:in `mon_synchronize'
-  activerecord (4.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
-  activerecord (4.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
-  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/monitor.rb:235:in `mon_synchronize'
-  activerecord (4.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
-  activerecord (4.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
-  activerecord (4.2.8) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
-  activerecord (4.2.8) lib/active_record/connection_handling.rb:87:in `connection'
-  activerecord (4.2.8) lib/active_record/migration.rb:383:in `connection'
-  activerecord (4.2.8) lib/active_record/migration.rb:370:in `call'
-  actionpack (4.2.8) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
-  activesupport (4.2.8) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
-  activesupport (4.2.8) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
-  activesupport (4.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
-  actionpack (4.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
-  actionpack (4.2.8) lib/action_dispatch/middleware/reloader.rb:73:in `call'
-  actionpack (4.2.8) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
-  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
-  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
-  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
-  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
-  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
-  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
-  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
-  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
-  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
-  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
-  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
-  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
-  rack (1.6.12) lib/rack/methodoverride.rb:22:in `call'
-  rack (1.6.12) lib/rack/runtime.rb:18:in `call'
-  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
-  rack (1.6.12) lib/rack/lock.rb:17:in `call'
-  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
-  rack (1.6.12) lib/rack/sendfile.rb:113:in `call'
-  railties (4.2.8) lib/rails/engine.rb:518:in `call'
-  railties (4.2.8) lib/rails/application.rb:165:in `call'
-  rack (1.6.12) lib/rack/lock.rb:17:in `call'
-  rack (1.6.12) lib/rack/content_length.rb:15:in `call'
-  rack (1.6.12) lib/rack/handler/webrick.rb:88:in `service'
-  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:140:in `service'
-  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:96:in `run'
-  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/server.rb:307:in `block in start_thread'
+
+Started GET "/assets/navbar.self-dfe46ec4c860ac157329fcee5119e6d7852d74c3d885d53c619e9b0979544f9f.css?body=1" for 10.0.2.2 at 2020-01-03 18:22:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
 
 
-  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.4ms)
-  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
-  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
-  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.9ms)
+Started GET "/assets/application.self-2f31436a86535e0b79a462b7deff27b5d239db4dc8c74509ae092a5f8b8d3bdd.css?body=1" for 10.0.2.2 at 2020-01-03 18:22:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-389c9b4e47b9eaa0e0a29914268297fc745ce048e87b06fef349c313698dd1a9.js?body=1" for 10.0.2.2 at 2020-01-03 18:22:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
