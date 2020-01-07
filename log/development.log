@@ -1,45 +1,509 @@
 
 
-Started GET "/" for 10.0.2.2 at 2020-01-03 23:24:50 +0000
+Started GET "/books/1" for 10.0.2.2 at 2020-01-06 23:02:54 +0000
 Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
-  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
-Processing by PagesController#home as HTML
-  Rendered pages/home.html.erb within layouts/application (7.8ms)
-  Rendered layouts/_top_nav.html.erb (0.9ms)
-Completed 200 OK in 6039ms (Views: 6010.8ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered books/show.html.erb within layouts/application (97.8ms)
+  Rendered layouts/_top_nav.html.erb (0.3ms)
+Completed 200 OK in 1837ms (Views: 1710.1ms | ActiveRecord: 2.7ms)
 
 
-Started GET "/assets/books.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 10.0.2.2 at 2020-01-03 23:24:57 +0000
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:03:03 +0000
 Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (1.2ms)
+  Rendered books/index.html.erb within layouts/application (41.4ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 507ms (Views: 506.0ms | ActiveRecord: 0.5ms)
 
 
-Started GET "/assets/books.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 10.0.2.2 at 2020-01-03 23:24:58 +0000
+Started GET "/books/1" for 10.0.2.2 at 2020-01-06 23:03:08 +0000
 Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered books/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 431ms (Views: 428.7ms | ActiveRecord: 0.6ms)
 
 
-Started GET "/" for 10.0.2.2 at 2020-01-04 20:54:39 +0000
+Started GET "/books/new" for 10.0.2.2 at 2020-01-06 23:03:43 +0000
 Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
-Processing by PagesController#home as HTML
-  Rendered pages/home.html.erb within layouts/application (0.2ms)
-  Rendered layouts/_top_nav.html.erb (0.2ms)
-Completed 200 OK in 507ms (Views: 506.6ms | ActiveRecord: 0.0ms)
+Processing by BooksController#new as HTML
+  [1m[36mGenre Load (0.5ms)[0m  [1mSELECT "genres".* FROM "genres"  ORDER BY "genres"."name" ASC[0m
+  Rendered books/new.html.erb within layouts/application (97.4ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 517ms (Views: 515.6ms | ActiveRecord: 1.0ms)
 
 
-Started GET "/assets/jquery3.self-e200ee796ef24add7054280d843a80de75392557bb4248241e870fac0914c0c1.js?body=1" for 10.0.2.2 at 2020-01-04 20:54:40 +0000
+Started POST "/books/new" for 10.0.2.2 at 2020-01-06 23:05:27 +0000
 Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1o/P2Ntrq1fJXI9Ecoi/74nqO8WJxVaRp2sMfPCnW38FFVhCibIwfil/iCf3paN4i3s4D+E3UR0ypx1leQTPAw==", "book"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f59c4e5f4a0 @tempfile=#<Tempfile:/tmp/RackMultipart20200106-27997-171tv6j.jpeg>, @original_filename="twilight.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[image]\"; filename=\"twilight.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "title"=>"Twilight", "author"=>"Stephanie Meyer", "genre"=>"", "description"=>"Located south side, pick up only", "wishlist"=>"Second book in the series", "location"=>"Calgary"}, "commit"=>"List Book"}
+Unpermitted parameter: genre
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "books" ("title", "author", "image", "description", "wishlist", "location", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Twilight"], ["author", "Stephanie Meyer"], ["image", "twilight.jpeg"], ["description", "Located south side, pick up only"], ["wishlist", "Second book in the series"], ["location", "Calgary"], ["created_at", "2020-01-06 23:05:28.226591"], ["updated_at", "2020-01-06 23:05:28.226591"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/books/2
+Completed 302 Found in 320ms (ActiveRecord: 1.5ms)
 
 
-Started GET "/assets/popper.self-70e1b2b78096eb80eb35ebac513e7a8007033ee3e881919cfdca4ece7779cffd.js?body=1" for 10.0.2.2 at 2020-01-04 20:54:40 +0000
+Started GET "/books/2" for 10.0.2.2 at 2020-01-06 23:05:28 +0000
 Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
-
-
-Started GET "/assets/application.self-2c2697e9ac98d23117281e12932be9c10bbf9122a407c26108c6238f97672ab4.css?body=1" for 10.0.2.2 at 2020-01-04 20:54:40 +0000
-Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
-
-
-Started GET "/" for 10.0.2.2 at 2020-01-04 20:54:41 +0000
-Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
-Processing by PagesController#home as HTML
-  Rendered pages/home.html.erb within layouts/application (0.0ms)
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (4.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered books/show.html.erb within layouts/application (0.5ms)
   Rendered layouts/_top_nav.html.erb (0.1ms)
-Completed 200 OK in 315ms (Views: 314.8ms | ActiveRecord: 0.0ms)
+Completed 200 OK in 595ms (Views: 585.1ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:05:35 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (0.9ms)
+  Rendered books/index.html.erb within layouts/application (33.1ms)
+  Rendered layouts/_top_nav.html.erb (0.1ms)
+Completed 200 OK in 499ms (Views: 497.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:05:51 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (0.9ms)
+  Rendered books/index.html.erb within layouts/application (37.7ms)
+  Rendered layouts/_top_nav.html.erb (0.1ms)
+Completed 200 OK in 551ms (Views: 550.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:16:18 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (0.6ms)
+  Rendered books/index.html.erb within layouts/application (38.3ms)
+Completed 500 Internal Server Error in 189ms (ActiveRecord: 1.6ms)
+
+SyntaxError (/vagrant/w11/finals/bookswap/app/views/books/_book.html.erb:14: syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^):
+  app/views/books/_book.html.erb:14: syntax error, unexpected end-of-input, expecting keyword_end
+  app/views/books/index.html.erb:10:in `_app_views_books_index_html_erb__1345190107068917225_70011767367720'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.8ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:16:46 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (1.4ms)
+  Rendered books/index.html.erb within layouts/application (43.7ms)
+  Rendered layouts/_top_nav.html.erb (0.1ms)
+Completed 200 OK in 535ms (Views: 533.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/.../100px180/" for 10.0.2.2 at 2020-01-06 23:16:47 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/.../100px180"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.12) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.12) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.12) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.12) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.12) lib/rack/lock.rb:17:in `call'
+  rack (1.6.12) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.12) lib/rack/handler/webrick.rb:88:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:140:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:96:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (13.6ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (48.3ms)
+
+
+Started GET "/.../100px180/" for 10.0.2.2 at 2020-01-06 23:16:47 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/.../100px180"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.12) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.12) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.12) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.12) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.12) lib/rack/lock.rb:17:in `call'
+  rack (1.6.12) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.12) lib/rack/handler/webrick.rb:88:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:140:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:96:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (36.1ms)
+
+
+Started GET "/books/1" for 10.0.2.2 at 2020-01-06 23:16:58 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered books/show.html.erb within layouts/application (32.8ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 465ms (Views: 462.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/.../100px180/" for 10.0.2.2 at 2020-01-06 23:16:59 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/books/.../100px180"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.12) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.12) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.12) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.12) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.12) lib/rack/lock.rb:17:in `call'
+  rack (1.6.12) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.12) lib/rack/handler/webrick.rb:88:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:140:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:96:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (29.6ms)
+
+
+Started GET "/.../100px180/" for 10.0.2.2 at 2020-01-06 23:17:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/.../100px180"):
+  actionpack (4.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.12) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.12) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.8) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.12) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.8) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.12) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.8) lib/rails/engine.rb:518:in `call'
+  railties (4.2.8) lib/rails/application.rb:165:in `call'
+  rack (1.6.12) lib/rack/lock.rb:17:in `call'
+  rack (1.6.12) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.12) lib/rack/handler/webrick.rb:88:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:140:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/httpserver.rb:96:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.5.7/lib/ruby/2.5.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.2ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.5.7/gems/actionpack-4.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (23.9ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:17:16 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (1.3ms)
+  Rendered books/index.html.erb within layouts/application (73.2ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 536ms (Views: 534.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:17:56 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (1.9ms)
+  Rendered books/index.html.erb within layouts/application (45.7ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 542ms (Views: 541.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:18:05 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (1.2ms)
+  Rendered books/index.html.erb within layouts/application (32.4ms)
+  Rendered layouts/_top_nav.html.erb (0.1ms)
+Completed 200 OK in 522ms (Views: 520.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:21:17 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (1.9ms)
+  Rendered books/index.html.erb within layouts/application (40.3ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 541ms (Views: 539.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:22:03 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (0.9ms)
+  Rendered books/index.html.erb within layouts/application (42.5ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 586ms (Views: 585.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:22:13 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (0.9ms)
+  Rendered books/index.html.erb within layouts/application (30.1ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 448ms (Views: 446.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:22:17 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (0.8ms)
+  Rendered books/index.html.erb within layouts/application (36.0ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 423ms (Views: 422.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:22:23 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (1.0ms)
+  Rendered books/index.html.erb within layouts/application (36.2ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 439ms (Views: 438.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:22:36 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (0.7ms)
+  Rendered books/index.html.erb within layouts/application (36.7ms)
+  Rendered layouts/_top_nav.html.erb (0.1ms)
+Completed 200 OK in 490ms (Views: 489.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/1" for 10.0.2.2 at 2020-01-06 23:24:11 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered books/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 423ms (Views: 421.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/new" for 10.0.2.2 at 2020-01-06 23:24:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#new as HTML
+  [1m[36mGenre Load (0.2ms)[0m  [1mSELECT "genres".* FROM "genres"  ORDER BY "genres"."name" ASC[0m
+  Rendered books/new.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_top_nav.html.erb (0.1ms)
+Completed 200 OK in 394ms (Views: 391.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/books/new" for 10.0.2.2 at 2020-01-06 23:25:54 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dFwGwPVprgpGnhyjQn61L3Q7xYupmZPmY472LxophKinxpFap7A1I6a9G8DHU6m4dqrGQcFrlGr2Quc2k4oQ1A==", "book"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f59c5ab2478 @tempfile=#<Tempfile:/tmp/RackMultipart20200106-27997-1fojti5.jpeg>, @original_filename="eggers.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[image]\"; filename=\"eggers.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "title"=>"A Heartbreaking Work of Staggering Genius", "author"=>"Dave Eggers", "genre"=>"", "description"=>"Great memoir, looking for another non-fiction", "wishlist"=>"Welcome to any recommendations!", "location"=>"Calgary"}, "commit"=>"List Book"}
+Unpermitted parameter: genre
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "image", "description", "wishlist", "location", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "A Heartbreaking Work of Staggering Genius"], ["author", "Dave Eggers"], ["image", "eggers.jpeg"], ["description", "Great memoir, looking for another non-fiction"], ["wishlist", "Welcome to any recommendations!"], ["location", "Calgary"], ["created_at", "2020-01-06 23:25:54.528354"], ["updated_at", "2020-01-06 23:25:54.528354"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/books/3
+Completed 302 Found in 308ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/books/3" for 10.0.2.2 at 2020-01-06 23:25:54 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBook Load (1.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 585ms (Views: 582.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:26:01 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (1.0ms)
+  Rendered books/index.html.erb within layouts/application (29.8ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 500ms (Views: 498.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/3" for 10.0.2.2 at 2020-01-06 23:26:14 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 375ms (Views: 374.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:29:15 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (1.1ms)
+  Rendered books/index.html.erb within layouts/application (32.3ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 5898ms (Views: 5894.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/3" for 10.0.2.2 at 2020-01-06 23:39:58 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 512ms (Views: 510.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books/3" for 10.0.2.2 at 2020-01-06 23:40:18 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mBook Load (1.1ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 381ms (Views: 376.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:41:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (1.6ms)
+  Rendered books/index.html.erb within layouts/application (40.6ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 475ms (Views: 474.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/new" for 10.0.2.2 at 2020-01-06 23:43:00 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#new as HTML
+  [1m[35mGenre Load (0.4ms)[0m  SELECT "genres".* FROM "genres"  ORDER BY "genres"."name" ASC
+  Rendered books/new.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 421ms (Views: 420.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/1" for 10.0.2.2 at 2020-01-06 23:43:45 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 408ms (Views: 407.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:48:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC
+  Rendered books/_book.html.erb (0.9ms)
+  Rendered books/index.html.erb within layouts/application (29.7ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 473ms (Views: 471.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books" for 10.0.2.2 at 2020-01-06 23:49:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"  ORDER BY "books"."created_at" DESC[0m
+  Rendered books/_book.html.erb (1.0ms)
+  Rendered books/index.html.erb within layouts/application (37.6ms)
+  Rendered layouts/_top_nav.html.erb (0.0ms)
+Completed 200 OK in 2215ms (Views: 2214.4ms | ActiveRecord: 0.3ms)
