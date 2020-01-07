@@ -8,12 +8,21 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Messages</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Login</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Signup</a>
-      </li>
+      <% if current_user %>
+        <li class="user-info">
+        <a class="nav-item active">Signed in as <%= current_user.name %></a> 
+        </li>
+        <li>
+        <a class="nav-item active"><%= link_to 'Logout', '/logout' %></a>
+        </li>
+        <% else %>
+        <li class="user-info">
+        <a class="nav-item active"><%= link_to 'Login', '/login' %></a>
+        </li>
+        <li class="user-info">
+        <a class="nav-item active"><%= link_to 'Signup', '/signup' %></a>
+        </li>
+        <% end %>
     </ul>
     <form class="form-inline my-2 my-lg-0 ml-auto">
       <input class="form-control mr-sm-2" type="search" placeholder="Search books" aria-label="Search">
