@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
@@ -517,3 +518,5 @@ Processing by PagesController#home as HTML
   Rendered layouts/_top_nav.html.erb (0.6ms)
 Completed 200 OK in 622ms (Views: 610.3ms | ActiveRecord: 0.0ms)
 >>>>>>> 8bac4b3d86317cc41a23ce1bd48b75e2b3e8a23e
+=======
+>>>>>>> feature/user-auth
