@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20200106171730) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
@@ -30,6 +31,11 @@ ActiveRecord::Schema.define(version: 20200106171730) do
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
+=======
+  create_table "chats", force: :cascade do |t|
+    t.text     "message"
+    t.string   "username"
+>>>>>>> 8bac4b3d86317cc41a23ce1bd48b75e2b3e8a23e
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
