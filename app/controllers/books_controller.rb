@@ -41,7 +41,7 @@ class BooksController < ApplicationController
       :description,
       :wishlist,
       :location,
-      :genre_id
+      :genre_id,
     )
   end
 

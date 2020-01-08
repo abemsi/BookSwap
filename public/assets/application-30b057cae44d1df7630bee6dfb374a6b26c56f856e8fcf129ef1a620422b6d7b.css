@@ -785,8 +785,6 @@ pre code {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 }
 
 /* line 51, ../../../../../home/vagrant/.rvm/gems/ruby-2.5.7/gems/bootstrap-4.4.1/assets/stylesheets/bootstrap/_grid.scss */

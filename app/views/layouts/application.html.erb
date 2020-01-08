@@ -7,11 +7,21 @@
   <%= csrf_meta_tags %>
 
   <style>
+
+  img {
+    webkit-filter: drop-shadow(5px 5px 5px #222);
+  }
     .suggestion-img {
       width: 60px;
       height: 60px;
     }
 
+    .suggestion-description {
+      display: none;
+  }
+  .suggestion-genre {
+      display: none;
+  }
     .suggestion {
       display: flex;
       padding: 5px;
@@ -26,16 +36,22 @@
 
 <script>
   const createSuggestionHTML = (data) => {
+    console.log(data.volumeInfo.imageLinks.smallThumbnail)
     return (`
       <li class='suggestion'>
-        <img class='suggestion-img' src='${"https://picsum.photos/200/300"}' />
+        <img class='suggestion-img' src='${data.volumeInfo.imageLinks.smallThumbnail}' />
         <div class='suggestion-text'>
-          <h5 class='suggestion-title'>${data.name}</h5>
-          <em>by <span class='suggestion-author'>${data.region}</span></em>
+          <h5 class='suggestion-title'>${data.volumeInfo.title}</h5>
+          <em>by <span class='suggestion-author fa fa-search'>${data.volumeInfo.authors}</span></em>
+          <span class='suggestion-description'>${data.volumeInfo.description}</span>
+          <span class='suggestion-genre'>${data.volumeInfo.categories}</span>
         </div>
       </li>
     `)
   }
+  
+  //  <span class='suggestion-medium'>${data.volumeInfo.imageLinks.medium}</span>
+
 
   const makeList = (data) => {
     const $list = $("<ul id='mylist'></ul>");
@@ -50,24 +66,38 @@
     */
   }
 
+  
+    $("#suggestion-text").click(function() {
+      console.log('hello');
+    });
+  
+
   $.get({
-    url: "https://restcountries.eu/rest/v1/lang/fr",
+    url: "https://www.googleapis.com/books/v1/volumes?q=harry+potter&maxResults=40&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8",
     success: function(response) {
-      
-        const list = makeList(response)
+       
+        const list = makeList(response.items)
         new Awesomplete(document.querySelector("#mylist"),{
           list: list,
           // text below is the created suggestion html from createSuggestionHTML
           replace: function(text) {
             const $suggestion = $(text.label);
             console.log("suggestion", $suggestion)
+
             const title = $suggestion.find('.suggestion-title').text();
             this.input.value = title;
-            
+
             const author = $suggestion.find('.suggestion-author').text();
             $('#author').val(author);
+
             const img = $suggestion.find('.suggestion-img').attr('src');
-            $('#image').val(img).show();
+            $("#image2").attr("src", img);
+
+            const genre = $suggestion.find('.suggestion-genre').text();
+            $('#genre').val(genre);
+
+            const description = $suggestion.find('.suggestion-description').text();
+            $('#description').val(description);
           }
         });
       }
