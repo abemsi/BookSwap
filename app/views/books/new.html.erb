@@ -13,16 +13,17 @@
           <div class="form-group">
             <%= form.label :image %>
             <%= form.file_field :image %>
+            <%= form.text_field :image_text, id: 'image',  hidden%>
           </div>
 
           <div class="form-group">
           <%= form.label :title %>
-          <%= form.text_field :title, class: 'form-control' %>
+          <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete' %>
           </div>
 
           <div class="form-group">
           <%= form.label :author %>
-          <%= form.text_field :author, class: 'form-control' %>
+          <%= form.text_field :author, id: 'author', class: 'form-control' %>
           </div>
 
           <div class="form-group">
