@@ -4,4 +4,12 @@ class Book < ActiveRecord::Base
   belongs_to :genre
   belongs_to :user
 
+  include PgSearch
+  pg_search_scope :search, against: [:title, :author],
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
+
 end
