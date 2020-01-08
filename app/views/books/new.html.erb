@@ -25,16 +25,16 @@
           <%= form.label :author %>
           <%= form.text_field :author, id: 'author', class: 'form-control' %>
           </div>
-
+          
           <div class="form-group">
             <%= form.label :genre %>
-            <%= form.select :genre, options_from_collection_for_select(Genre.all.order(:name), :id, :name), { include_blank: true }, class: 'form-control' %>
+            <%= form.text_field :genre, id: 'genre', class: 'form-control' %>
           </div>
 
           <div class="form-group">
-            <%= form.label :description %>
-            <%= form.text_area :description, class: 'form-control' %>
-          </div>
+          <%= form.label :description %>
+          <%= form.text_field :description, id: 'description', class: 'form-control' %>
+        </div>
 
           <div class="form-group">
             <%= form.label :condition %>
