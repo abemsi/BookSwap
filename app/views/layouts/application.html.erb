@@ -5,6 +5,18 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <style>
+    .suggestion-img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .suggestion {
+      display: flex;
+      padding: 5px;
+    }
+  </style>
 </head>
 <body>
 
@@ -12,5 +24,54 @@
 
 <%= yield %>
 
+<script>
+  const createSuggestionHTML = (data) => {
+    return (`
+      <li class='suggestion'>
+        <img class='suggestion-img' src='${"https://picsum.photos/200/300"}' />
+        <div class='suggestion-text'>
+          <h5 class='suggestion-title'>${data.name}</h5>
+          <em>by <span class='suggestion-author'>${data.region}</span></em>
+        </div>
+      </li>
+    `)
+  }
+
+  const makeList = (data) => {
+    const $list = $("<ul id='mylist'></ul>");
+    return data.map(suggestion => {
+      return createSuggestionHTML(suggestion)
+    })
+    /**data.forEach(suggestion => {
+      $list.append(createSuggestionHTML(suggestion))
+    })
+    
+    return $list[0]
+    */
+  }
+
+  $.get({
+    url: "https://restcountries.eu/rest/v1/lang/fr",
+    success: function(response) {
+      
+        const list = makeList(response)
+        new Awesomplete(document.querySelector("#mylist"),{
+          list: list,
+          // text below is the created suggestion html from createSuggestionHTML
+          replace: function(text) {
+            const $suggestion = $(text.label);
+            console.log("suggestion", $suggestion)
+            const title = $suggestion.find('.suggestion-title').text();
+            this.input.value = title;
+            
+            const author = $suggestion.find('.suggestion-author').text();
+            $('#author').val(author);
+            const img = $suggestion.find('.suggestion-img').attr('src');
+            $('#image').val(img).show();
+          }
+        });
+      }
+  });
+</script>
 </body>
 </html>
