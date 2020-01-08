@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20200108193818) do
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
-    t.text   "genre"
+    t.text     "genre"
     t.string   "rating"
     t.text     "description"
     t.string   "image"
