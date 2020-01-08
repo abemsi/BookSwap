@@ -68,18 +68,13 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   
-  get 'books/new' => 'books#new'
-  post 'books/new' => 'books#create'
+  get '/books/new' => 'books#new'
+  post '/books/new' => 'books#create'
 
-  get 'books/:id' => 'books#show'
+  get '/books/:id' => 'books#show'
 
   get '/books' => 'books#index'
   
-  get 'genres/show'
-  
-  get 'books/destroy'
-  
-  get 'books/edit'
-  
+  get '/search' => 'pages#search'
  
 end
