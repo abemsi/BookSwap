@@ -12,8 +12,11 @@
       height: 60px;
     }
 
-    .fa-search + span {
-      visibility: hidden;
+    .suggestion-description {
+      display: none;
+  }
+  .suggestion-genre {
+      display: none;
   }
     .suggestion {
       display: flex;
@@ -66,7 +69,7 @@
   
 
   $.get({
-    url: "https://www.googleapis.com/books/v1/volumes?q=%27%27&filter=full&libraryRestrict=no-restrict&maxResults=40&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8",
+    url: "https://www.googleapis.com/books/v1/volumes?q=harry+potter&maxResults=40&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8",
     success: function(response) {
        
         const list = makeList(response.items)
@@ -84,7 +87,7 @@
             $('#author').val(author);
 
             const img = $suggestion.find('.suggestion-img').attr('src');
-            $('#image').val(img).show();
+            $("#image2").attr("src", img);
 
             const genre = $suggestion.find('.suggestion-genre').text();
             $('#genre').val(genre);
