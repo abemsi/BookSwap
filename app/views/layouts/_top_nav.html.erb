@@ -9,20 +9,23 @@
         <a class="nav-link" href="/books">Books</a>
       </li>
       <% if current_user %>
+        <li class="nav-item active">
+          <a class="nav-link" href="/books/new">List a book</a>
+        </li>
         <li class="user-info">
-        <a class="nav-item active">Signed in as <%= current_user.name %></a> 
+          <a class="nav-item active">Signed in as <%= current_user.name %></a> 
         </li>
         <li>
-        <a class="nav-item active"><%= link_to 'Logout', '/logout' %></a>
+          <a class="nav-item active"><%= link_to 'Logout', '/logout' %></a>
         </li>
         <% else %>
         <li class="user-info">
-        <a class="nav-item active"><%= link_to 'Login', '/login' %></a>
+          <a class="nav-item active"><%= link_to 'Login', '/login' %></a>
         </li>
         <li class="user-info">
-        <a class="nav-item active"><%= link_to 'Signup', '/signup' %></a>
+          <a class="nav-item active"><%= link_to 'Signup', '/signup' %></a>
         </li>
-        <% end %>
+      <% end %>
     </ul>
 
     <%= form_tag(search_path, method: :get, class: "form-inline my-2 my-lg-0 ml-auto") do %>  
