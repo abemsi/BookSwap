@@ -2,3 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.jumbotron {
+  background-image: url('https://github.com/abemsi/BookSwap/blob/layout/public/images/book.jpg?raw=true');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.books {
+  padding: 50px;
+}
