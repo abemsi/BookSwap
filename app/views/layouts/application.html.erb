@@ -21,14 +21,20 @@
       font-weight: bold;
       padding-bottom: 5px;
     }
-
     .suggestion-description {
       display: none;
+    }
+    .suggestion-author {
+      font-size: 4mm;
     }
     .suggestion-genre {
       display: none;
     }
+    .suggestion-rating {
+      font-size: 3.5mm;
+    }
     .suggestion {
+      border: 1px solid black;
       display: flex;
       padding: 5px;
     }
@@ -43,15 +49,16 @@
 
 <script>
   const createSuggestionHTML = (data) => {
-    console.log(data.volumeInfo.imageLinks.smallThumbnail)
+    console.log(data.volumeInfo.averageRating)
     return (`
       <li class='suggestion'>
         <img class='suggestion-img' src='${data.volumeInfo.imageLinks.smallThumbnail}' />
         <div class='suggestion-text'>
-          <h6 class='suggestion-title'>${data.volumeInfo.title}</6>
-          <em>by <span class='suggestion-author fa fa-search'>${data.volumeInfo.authors}</span></em>
+          <h6 class='suggestion-title'>${data.volumeInfo.title}</6><br>
+          <em> <span class='suggestion-author'>by: ${data.volumeInfo.authors}</span></em>
           <span class='suggestion-description'>${data.volumeInfo.description}</span>
-          <span class='suggestion-genre'>${data.volumeInfo.categories}</span>
+          <span class='suggestion-genre'>${data.volumeInfo.categories}</span><br>
+          <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
         </div>
       </li>
     `)
