@@ -9,23 +9,30 @@
   <style>
 
   img {
-    webkit-filter: drop-shadow(5px 5px 5px #222);
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+    padding-right: 20px
   }
     .suggestion-img {
       width: 60px;
       height: 60px;
     }
+    .suggestion-title {
+      font-weight: bold;
+      padding-bottom: 5px;
+    }
 
     .suggestion-description {
       display: none;
-  }
-  .suggestion-genre {
+    }
+    .suggestion-genre {
       display: none;
-  }
+    }
     .suggestion {
       display: flex;
       padding: 5px;
     }
+
   </style>
 </head>
 <body>
@@ -41,7 +48,7 @@
       <li class='suggestion'>
         <img class='suggestion-img' src='${data.volumeInfo.imageLinks.smallThumbnail}' />
         <div class='suggestion-text'>
-          <h5 class='suggestion-title'>${data.volumeInfo.title}</h5>
+          <h6 class='suggestion-title'>${data.volumeInfo.title}</6>
           <em>by <span class='suggestion-author fa fa-search'>${data.volumeInfo.authors}</span></em>
           <span class='suggestion-description'>${data.volumeInfo.description}</span>
           <span class='suggestion-genre'>${data.volumeInfo.categories}</span>
