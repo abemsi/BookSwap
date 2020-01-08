@@ -33,6 +33,9 @@
     .suggestion-rating {
       font-size: 3.5mm;
     }
+    .suggestion-cover {
+      display: none
+    }
     .suggestion {
       border: 1px solid black;
       display: flex;
@@ -53,14 +56,13 @@
     return (`
       <li class='suggestion'>
         <img class='suggestion-img' src='${data.volumeInfo.imageLinks.smallThumbnail}' />
-        <div class='suggestion-text'>
-          <h6 class='suggestion-title'>${data.volumeInfo.title}</6><br>
-          <em> <span class='suggestion-author'>by: ${data.volumeInfo.authors}</span></em>
+          <h6 class='suggestion-title'>${data.volumeInfo.title}</h6><br>
+          <em><span class='suggestion-author'>by: ${data.volumeInfo.authors}</span></em>
           <span class='suggestion-description'>${data.volumeInfo.description}</span>
           <span class='suggestion-genre'>${data.volumeInfo.categories}</span><br>
           <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
-        </div>
-      </li>
+          <span class='suggestion-cover'>${data.volumeInfo.imageLinks.smallThumbnail}/5</span>
+          </li> 
     `)
   }
   
@@ -100,9 +102,13 @@
 
             const title = $suggestion.find('.suggestion-title').text();
             this.input.value = title;
+            console.log(title)
 
             const author = $suggestion.find('.suggestion-author').text();
             $('#author').val(author);
+
+            const cover = $suggestion.find('.suggestion-cover').text();
+            $('#cover').val(cover);
 
             const img = $suggestion.find('.suggestion-img').attr('src');
             $("#image2").attr("src", img);
