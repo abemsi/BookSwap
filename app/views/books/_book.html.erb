@@ -6,6 +6,8 @@
     <% end %>
     <h6 class="card-title"><%= book.author %></h6>
     <p class="card-text"><%= book.condition %></p>
+    <p> Listed at: </p>
+    <p class="card-text"><%= time_ago_in_words(book.created_at) %> ago</p>
     <p><%= book.location %></p>
   </div>
 </div>

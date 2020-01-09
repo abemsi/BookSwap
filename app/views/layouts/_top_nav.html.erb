@@ -12,8 +12,11 @@
         <li class="nav-item active">
           <a class="nav-link" href="/books/new">List a book</a>
         </li>
-        <li class="user-info">
-          <a class="nav-item active">Signed in as <%= current_user.name %></a> 
+        <li class="nav-item active">
+          <a class="nav-link" href="/profile">My listings</a>
+        </li>
+        <li class="nav-item active">
+          <a>Signed in as <%= current_user.name %></a> 
         </li>
         <li>
           <a class="nav-item active"><%= link_to 'Logout', '/logout' %></a>
