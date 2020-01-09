@@ -1,92 +1,92 @@
-<div class="top"></div>
-
-
-<% if (@book.cover) %> 
-<p>
-  <%= image_tag @book.cover %>
-</p>
-<% else %>
-  <%= image_tag @book.image.thumb %>
-<% end %>
-
-<% if (@book.title).eql?('undefined' || '') %> 
-  <% else %>
-  <p>
-    <strong>Title:</strong>
-    <%= @book.title %>
-  </p>
-<% end %>
-
-<% if (@book.author).eql?('undefined' || '') %> 
-  <% else %>
-  <p>
-    <strong>Author:</strong>
-    <%= @book.author %>
-  </p>
-<% end %>
-
-<% if (@book.category).eql?('undefined' || '') %> 
-  <% else %>
-  <p>
-    <strong>Genre:</strong>
-    <%= @book.category %>
-  </p>
-<% end %>
-
-<% if (@book.description).eql?('undefined' || '') %> 
-  <% else %>
-  <p>
-    <strong>Description:</strong>
-    <%= @book.description %>
-  </p>
-<% end %>
-
-<% if (@book.condition).blank? %> 
-  <% else %>
-  <p>
-  <strong>Condition:</strong>
-  <%= @book.condition %>
-  </p>
+<div class="listing_details">
+  <% if (@book.cover) %> 
+    <p>
+      <%= image_tag @book.cover, :class => "book_cover_img" %>
+    </p>
+    <% elsif %>
+      <%= image_tag @book.image.thumb %>
+    <% else %>
+      <%= image_tag 'https://apps3.awi.de/YPP/png/no-image.png' %>
   <% end %>
 
-  <% if (@book.publisher).eql?('undefined' || '') %> 
-  <% else %>
-  <p>
-    <strong>Publisher:</strong>
-    <%= @book.publisher %>
-  </p>
-<% end %>
-
-<% if (@book.pub_date).eql?('undefined' || '') %>
-  <% else %>
-  <p>
-    <strong>Publisher Date:</strong>
-    <%= @book.pub_date %>
-  </p>
-<% end %>
-
-<% if (@book.rating).eql?("undefined" || '') %> 
-  <% else %>
-  <p>
-<strong>Rating:</strong>
-<%= @book.rating %>/5
-</p>
+  <% if (@book.title).eql?('undefined' || '') %> 
+    <% else %>
+    <p>
+      <strong>Title:</strong>
+      <%= @book.title %>
+    </p>
   <% end %>
 
-  <% if (@book.wishlist).eql?('undefined' || '') %> 
-  <p>
-    <strong>Wishlist:</strong>
-    <%= @book.wishlist %>
+  <% if (@book.author).eql?('undefined' || '') %> 
+    <% else %>
+    <p>
+      <strong>Author:</strong>
+      <%= @book.author %>
+    </p>
+  <% end %>
+
+  <% if (@book.category).eql?('undefined' || '') %> 
+    <% else %>
+    <p>
+      <strong>Genre:</strong>
+      <%= @book.category %>
+    </p>
+  <% end %>
+
+  <% if (@book.condition).blank? %> 
+    <% else %>
+    <p>
+    <strong>Condition:</strong>
+    <%= @book.condition %>
+    </p>
+    <% end %>
+
+    <% if (@book.publisher).eql?('undefined' || '') %> 
+    <% else %>
+    <p>
+      <strong>Publisher:</strong>
+      <%= @book.publisher %>
+    </p>
+  <% end %>
+
+  <% if (@book.pub_date).eql?('undefined' || '') %>
+    <% else %>
+    <p>
+      <strong>Publisher Date:</strong>
+      <%= @book.pub_date %>
+    </p>
+  <% end %>
+
+  <% if (@book.rating).eql?("undefined" || '') %> 
+    <% else %>
+    <p>
+  <strong>Rating:</strong>
+  <%= @book.rating %>/5
   </p>
-  <% else %>
-<% end %>
+    <% end %>
 
-<% if (@book.location).eql?('undefined' || '') %> 
-<p>
-  <strong>Location:</strong>
-  <%= @book.location %>
-</p>
-  <% else %>
-  
-<% end %>
+    <% if (@book.description).eql?('undefined' || '') %> 
+    <% else %>
+      <strong id='descrip_click'>Show Description</strong>
+    <p id='description_paragraph'>
+      <%= @book.description %>
+    </p>
+  <% end %>
 
+    <% if (@book.wishlist).eql?('undefined' || '') %> 
+    <p>
+      <strong>Wishlist:</strong>
+      <%= @book.wishlist %>
+    </p>
+    <% else %>
+  <% end %>
+
+  <% if (@book.location).eql?('undefined' || '') %> 
+  <p>
+    <strong>Location:</strong>
+    <%= @book.location %>
+  </p>
+    <% else %>
+    
+  <% end %>
+</div>

@@ -53,6 +53,16 @@
 </head>
 <body>
 
+<script>
+  $(document).ready(function() {
+    $("#description_paragraph").hide()
+    $("#descrip_click").on('click', function () {
+      $("#description_paragraph").slideToggle("slow", function() { 
+      })
+    });
+  });
+</script>
+
 <%= render 'layouts/top_nav' %>
 
 <%= yield %>
@@ -65,8 +75,7 @@
         <h6 class='suggestion-title'>${data.volumeInfo.title}</h6><br>
         <em><span class='suggestion-author'>${data.volumeInfo.authors}</span></em>
         <span class='suggestion-description'>${data.volumeInfo.description}</span>
-        <span class='suggestion-category'>${data.volumeInfo.categories}</span><br>
-        
+        <span class='suggestion-category'>${data.volumeInfo.categories}</span>
         <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
         <span class='suggestion-cover'>${data.volumeInfo.imageLinks.smallThumbnail}</span>
         <span class='suggestion-publisher'>${data.volumeInfo.publisher}</span>
@@ -98,7 +107,7 @@
   
 
   $.get({
-    url: "https://www.googleapis.com/books/v1/volumes?q=harry+potter&maxResults=40&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8",
+    url: "https://www.googleapis.com/books/v1/volumes?q={book}&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8",
     success: function(response) {
        
         const list = makeList(response.items)

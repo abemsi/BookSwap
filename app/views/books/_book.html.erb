@@ -1,6 +1,6 @@
 <div class="card" style="width: 18rem;">
   <%= link_to book do %>
-  <img class="card-img-top"><%= image_tag book.cover %></img>
+  <img class="card-img-top"><%= image_tag book.cover, :class => 'book_cover_img' %></img>
   <div class="card-body">
     <h5 class="card-title"><%= book.title %></h5>
     <% end %>
