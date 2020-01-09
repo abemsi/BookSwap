@@ -47,5 +47,64 @@ body {
 }
 
 .listing_details {
-  text-align: center;
+  padding-top: 100px;
+  padding-left: 50px;
 }
+
+img {
+  padding-right: 20px
+}
+  .suggestion-img {
+    width: 60px;
+    height: 60px;
+  }
+  .suggestion-title {
+    font-weight: bold;
+    padding-bottom: 5px;
+  }
+  
+  .suggestion-author {
+    font-size: 3.5mm;
+  }
+
+  .suggestion {
+    border: 1px solid black;
+    display: flex;
+    padding: 5px;
+  }
+
+  .hide_info {
+    display:none;
+  }
+  .suggestion-img {
+      width: 60px;
+      height: 60px;
+  }
+  .suggestion-title {
+    font-weight: bold;
+    padding-bottom: 5px;
+    margin-right: 5px;
+  }
+
+  .suggestion-author {
+    font-size: 3.5mm;
+  }
+  
+  .suggestion {
+    border: 1px solid black;
+    display: flex;
+    padding: 5px;
+  }
+
+  .sign {
+    margin-top: 5px;
+  }
+
+  a.nav-link {
+    margin: 10px !important;
+    padding: 0 !important;
+  }
+
+  a {
+    margin: 10px;
+  }
