@@ -1,11 +1,12 @@
 <div class="top"></div>
 
-<% if (@book.image.thumb) != 'undefined' %> 
+
+<% if (@book.cover) %> 
+<p>
+  <%= image_tag @book.cover %>
+</p>
 <% else %>
-  <p>
-    <%= image_tag @book.image.thumb %>
-    <%= image_tag src='', id: 'image2' %>
-  </p>
+  <%= image_tag @book.image.thumb %>
 <% end %>
 
 <% if (@book.title).eql?('undefined' || '') %> 
