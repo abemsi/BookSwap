@@ -5,29 +5,37 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand" href="/">BookSwap</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
       <li class="nav-item active">
         <a class="nav-link" href="/books">Books</a>
       </li>
+
       <% if current_user %>
         <li class="nav-item active">
           <a class="nav-link" href="/books/new">List a book</a>
         </li>
+
         <li class="nav-item active">
           <a class="nav-link" href="/profile">My listings</a>
         </li>
+
         <li class="nav-item active">
-          <a>Signed in as <%= current_user.name %></a> 
+          <a class="nav-link"> Hello, <u><%= current_user.name %></u></a> 
         </li>
-        <li>
-          <a class="nav-item active"><%= link_to 'Logout', '/logout' %></a>
+
+        <li class="nav-item active">
+          <a class="nav-link"><%= link_to 'Logout', '/logout' %></a>
         </li>
+
         <% else %>
-        <li class="user-info">
-          <a class="nav-item active"><%= link_to 'Login', '/login' %></a>
+        <li class="nav-item active">
+          <a class="nav-link"><%= link_to 'Login', '/login' %></a>
         </li>
-        <li class="user-info">
-          <a class="nav-item active"><%= link_to 'Signup', '/signup' %></a>
+
+        <li class="nav-item active">
+          <a class="nav-link"><%= link_to 'Signup', '/signup' %></a>
         </li>
+
       <% end %>
     </ul>
 
