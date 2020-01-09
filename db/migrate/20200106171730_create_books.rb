@@ -12,6 +12,7 @@ class CreateBooks < ActiveRecord::Migration
       t.text     :publisher
       t.text     :pub_date
       t.text     :category
+      t.text     :cover
 
       t.timestamps null: false
     end
