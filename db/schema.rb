@@ -19,14 +19,16 @@ ActiveRecord::Schema.define(version: 20200108193818) do
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
-    t.string   "cover"
-    t.text     "genre"
-    t.string   "rating"
-    t.text     "description"
+    t.text     "rating"
+    t.text     "publisher"
+    t.text     "pub_date"
     t.string   "image"
-    t.text     "wishlist"
     t.string   "condition"
     t.string   "location"
+    t.text     "cover"
+    t.text     "category"
+    t.text     "description"
+    t.text     "wishlist"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -51,4 +53,13 @@ ActiveRecord::Schema.define(version: 20200108193818) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
 end

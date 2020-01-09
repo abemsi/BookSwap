@@ -17,28 +17,48 @@
           </div>
 
           <div class="form-group">
-          <%= form.label :title %>
-          <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete' %>
+            <%= form.label :title %>
+            <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete' %>
           </div>
 
           <div class="form-group">
-          <%= form.label :author %>
-          <%= form.text_field :author, id: 'author', class: 'form-control' %>
+            <%= form.label :author %>
+            <%= form.text_field :author, id: 'author', class: 'form-control', :required => true %>
           </div>
           
           <div class="form-group">
-            <%= form.label :genre %>
-            <%= form.text_field :genre, id: 'genre', class: 'form-control' %>
+            <%= form.label :category %>
+            <%= form.text_field :category, id: 'category', class: 'form-control', :required => true %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= form.label :publisher %>
+            <%= form.text_field :publisher, id: 'publisher', class: 'form-control' %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= form.label :rating %>
+            <%= form.text_field :rating, id: 'rating', class: 'form-control' %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= form.label :pub_date %>
+            <%= form.text_field :pub_date, id: 'pub_date', class: 'form-control' %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= form.label :cover %>
+            <%= form.text_field :cover, id: 'cover', class: 'form-control' %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= form.label :description %>
+            <%= form.text_field :description, id: 'description', class: 'form-control' %>
           </div>
 
           <div class="form-group">
-          <%= form.label :description %>
-          <%= form.text_field :description, id: 'description', class: 'form-control' %>
-        </div>
-
-          <div class="form-group">
             <%= form.label :condition %>
-            <select class="form-control">
+            <select class="form-control", required>
             <option selected>Choose option</option>
             <option>Seen better days</option>
             <option>Well read</option>
@@ -49,7 +69,7 @@
 
           <div class="form-group">
             <%= form.label :wishlist %>
-            <%= form.text_area :wishlist, class: 'form-control' %>
+            <%= form.text_area :wishlist, class: 'form-control', :required => true %>
           </div>
 
           <div class="form-group">
