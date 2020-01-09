@@ -27,8 +27,26 @@ body {
 .card {
   align-items: center;
   margin: 5px;
+  margin-bottom: 20px;
 }
 
 .row {
   align-self: center;
+}
+
+.book_cover_img {
+  -webkit-filter: drop-shadow(10px 10px 10px #222);
+    filter: drop-shadow(10px 10px 10px #222);
+}
+
+.book_cover_img:hover {
+  position:relative;
+  width:10em;
+  height:auto;
+  display:block;
+  
+}
+
+.listing_details {
+  text-align: center;
 }
