@@ -19,13 +19,25 @@ ActiveRecord::Schema.define(version: 20200108193818) do
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
-    t.text     "description"
+    t.text     "rating"
+    t.text     "publisher"
+    t.text     "pub_date"
     t.string   "image"
-    t.text     "wishlist"
     t.string   "condition"
     t.string   "location"
+    t.text     "cover"
+    t.text     "category"
+    t.text     "description"
+    t.text     "wishlist"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.text     "message"
+    t.string   "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
@@ -41,8 +53,6 @@ ActiveRecord::Schema.define(version: 20200108193818) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
-
-  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

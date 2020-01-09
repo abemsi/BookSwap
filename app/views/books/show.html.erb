@@ -1,42 +1,92 @@
 <div class="top"></div>
 
+
+<% if (@book.cover) %> 
 <p>
+  <%= image_tag @book.cover %>
+</p>
+<% else %>
   <%= image_tag @book.image.thumb %>
-  <%= image_tag src='', id: 'image2' %>
-</p>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+<% if (@book.title).eql?('undefined' || '') %> 
+  <% else %>
+  <p>
+    <strong>Title:</strong>
+    <%= @book.title %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
+<% if (@book.author).eql?('undefined' || '') %> 
+  <% else %>
+  <p>
+    <strong>Author:</strong>
+    <%= @book.author %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Genre:</strong>
-  <%= @book.genre %>
-</p>
+<% if (@book.category).eql?('undefined' || '') %> 
+  <% else %>
+  <p>
+    <strong>Genre:</strong>
+    <%= @book.category %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @book.description %>
-</p>
+<% if (@book.description).eql?('undefined' || '') %> 
+  <% else %>
+  <p>
+    <strong>Description:</strong>
+    <%= @book.description %>
+  </p>
+<% end %>
 
-<p>
+<% if (@book.condition).blank? %> 
+  <% else %>
+  <p>
   <strong>Condition:</strong>
   <%= @book.condition %>
-</p>
+  </p>
+  <% end %>
 
-<p>
-  <strong>Wishlist:</strong>
-  <%= @book.wishlist %>
-</p>
+  <% if (@book.publisher).eql?('undefined' || '') %> 
+  <% else %>
+  <p>
+    <strong>Publisher:</strong>
+    <%= @book.publisher %>
+  </p>
+<% end %>
 
+<% if (@book.pub_date).eql?('undefined' || '') %>
+  <% else %>
+  <p>
+    <strong>Publisher Date:</strong>
+    <%= @book.pub_date %>
+  </p>
+<% end %>
+
+<% if (@book.rating).eql?("undefined" || '') %> 
+  <% else %>
+  <p>
+<strong>Rating:</strong>
+<%= @book.rating %>/5
+</p>
+  <% end %>
+
+  <% if (@book.wishlist).eql?('undefined' || '') %> 
+  <p>
+    <strong>Wishlist:</strong>
+    <%= @book.wishlist %>
+  </p>
+  <% else %>
+<% end %>
+
+<% if (@book.location).eql?('undefined' || '') %> 
 <p>
   <strong>Location:</strong>
   <%= @book.location %>
 </p>
+  <% else %>
+  
+<% end %>
 

@@ -39,9 +39,14 @@ class BooksController < ApplicationController
       :image,
       :condition,
       :description,
+      :category,
       :wishlist,
+      :rating,
       :location,
+      :publisher,
+      :pub_date,
       :genre_id,
+      :cover
     )
   end
 

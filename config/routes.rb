@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :books
   resources :search, only: [:search]
   resources :genres, only: [:show]
+  resources :users
+  
+  get '/profile' => 'profile#index'
   
   root to: 'pages#home'
   
