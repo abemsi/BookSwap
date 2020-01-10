@@ -1,30 +1,48 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+  <div class="container">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
     <a class="navbar-brand" href="/">BookSwap</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+    <div class="searchbar">
+      <%= form_tag(search_path, method: :get, class: "form-inline") do %>  
+        <div class="form-group no-border has-white">  
+          <%= search_field_tag :term, params[:term], placeholder: "Search books", class: "form-control" %>  
+        </div>
+        <button type="submit" class="btn btn-white btn-just-icon">
+          <i class="material-icons">search</i>
+        </button>
+      <% end %>
+    </div>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
 
       <li class="nav-item active">
         <a class="nav-link" href="/books">Books</a>
       </li>
 
       <% if current_user %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          My Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item">Hello, <u><%= current_user.name %></a>
+          <a class="dropdown-item">My Swaps</a>
+          <a class="dropdown-item"><%= link_to "Messages", conversations_path %></a>
+          <a class="dropdown-item"><%= link_to 'Logout', '/logout' %></a>
+        </div>
+      </li>
+
         <li class="nav-item active">
           <a class="nav-link" href="/books/new">List a book</a>
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link" href="/profile">My listings</a>
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link"> Hello, <u><%= current_user.name %></u></a> 
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link"><%= link_to 'Logout', '/logout' %></a>
         </li>
 
         <% else %>
@@ -35,18 +53,10 @@
         <li class="nav-item active">
           <a class="nav-link"><%= link_to 'Signup', '/signup' %></a>
         </li>
-
       <% end %>
     </ul>
 
-    <%= form_tag(search_path, method: :get, class: "form-inline my-2 my-lg-0 ml-auto") do %>  
-      <div class="input-group">  
-        <%= search_field_tag :term, params[:term], placeholder: "Search books", class: "form-control mr-sm-2" %>  
-        <div class="input-group-btn">  
-          <%= submit_tag 'Search', class: "btn btn-primary my-2 my-sm-0" %> 
-        </div>  
-      </div>  
-    <% end %>
 
+  </div>
   </div>
 </nav>
