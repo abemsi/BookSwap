@@ -67,7 +67,7 @@
 
     <% if (@book.description).eql?('undefined' || '') %> 
     <% else %>
-      <strong id='descrip_click'>Show Description</strong>
+      <strong id='descrip_click'><u>View Description</u></strong>
     <p id='description_paragraph'>
       <%= @book.description %>
     </p>
@@ -87,6 +87,26 @@
     <%= @book.location %>
   </p>
     <% else %>
-    
   <% end %>
+  <div id='show_map'>
+    <p><u><strong>View map</strong></u></p>
+  </div>
 </div>
+
+
+
+<%= render 'books/maps' %>
+
+<!DOCTYPE html>
+<html>
+<script>
+  $(document).ready(function() {
+      $("#map").hide()
+      $("#show_map").on('click', function () {
+        console.log('map clicked')
+        $("#map").slideToggle("fast", function() { 
+        })
+      });
+    });
+</script>
+</html>
