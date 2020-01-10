@@ -30,8 +30,8 @@
         <img class='suggestion-img' src='${data.volumeInfo.imageLinks.smallThumbnail}' />
         <h6 class='suggestion-title'>${data.volumeInfo.title}</h6><br><br>
         <em><span class='suggestion-author'>${data.volumeInfo.authors}</span></em>
-        <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
         <span class='hide_info'>
+        <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
         <span class='suggestion-description'>${data.volumeInfo.description}</span>
         <span class='suggestion-category'>${data.volumeInfo.categories}</span>
         <span class='suggestion-cover'>${data.volumeInfo.imageLinks.smallThumbnail}</span>
@@ -49,10 +49,11 @@
       return createSuggestionHTML(suggestion)
     })
   }
-  $("#mylist").focus()
+  
   $("#mylist").on('input', () => {
     
     const book = $("#mylist").val();
+    
     $.get({
       url: `https://www.googleapis.com/books/v1/volumes?q=`+ book + `&fields=items(
         volumeInfo/authors,
@@ -62,7 +63,7 @@
         volumeInfo/imageLinks,
         volumeInfo/publisher,
         volumeInfo/publishedDate,
-        volumeInfo/title)&maxResults=5&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
+        volumeInfo/title)&maxResults=10&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
       success: function(response) {
           console.log(response);
           const list = makeList(response.items)
