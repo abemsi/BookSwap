@@ -89,4 +89,30 @@
     <% else %>
     
   <% end %>
+
 </div>
+
+<div class="column is-3 is-offset-1">
+    <% if book_author(@book) %>
+      <div class="bg-light pa3 mb4 border-radius-3">
+        <p class="f6 pb1">Author actions:</p>
+        <div class="button-group">
+          
+          <%= link_to "Back", books_path, class: "button is-small" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="pr5 mb4">
+      <p class="text-align-left f6">Swap author:</p>
+      
+      <div class="inline-block"><%= @book.user.name %></div>
+    </div>
+    <% if current_user.id != @book.user_id %>
+      <%= link_to "Message #{@book.user.name}", conversations_path(sender_id: current_user.id, recipient_id: @book.user.id), method: 'post', class:"button is-link" %>
+    <% elsif current_user.id == @book.user_id  %>
+      <%= link_to "Conversations", conversations_path %>
+    <% else %>
+
+    <%= link_to "Login to message #{@book.user.name}", new_user_registration_path %>
+    <% end %>
+  </div>
