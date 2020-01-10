@@ -1,36 +1,46 @@
 class BooksController < ApplicationController
+  before_action :set_book, only: [:show, :edit, :destroy]
+  before_action :authorize_user, except: [:index, :show]
+
+  # GET /books
   def index
     @books = Book.all.order(created_at: :desc)
   end
 
+  # GET /books/:id
   def show
-    @book = Book.find (params[:id])
   end
 
+  # GET /books/new
   def new
-    @book = Book.new
+    @book = current_user.books.build
   end
 
+  # GET /books/:id/edit
+  def edit
+  end
+
+  # POST /books
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)
 
     if @book.save
-      redirect_to @book
+      redirect_to @book, notice: 'Swap was successfully created.'
     else
       render :new
     end
   end
 
   def destroy
-    @book = Book.find params[:id]
     @book.destroy
-    redirect_to [:books], notice: 'Book deleted!'
-  end
-
-  def edit
+    redirect_to [:books], notice: 'Book was successfully deleted!'
   end
 
   private
+
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
   def book_params
     params.require(:book).permit(
