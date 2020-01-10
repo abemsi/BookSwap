@@ -17,7 +17,7 @@
  @import "bootstrap";
 
 body {
-  padding-top: 60px;
+  padding-top: 75px;
 }
 
 .hidden {
@@ -107,4 +107,11 @@ img {
 
   a {
     margin: 10px;
+  }
+
+  .container-footer {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
