@@ -30,10 +30,10 @@
         <img class='suggestion-img' src='${data.volumeInfo.imageLinks.smallThumbnail}' />
         <h6 class='suggestion-title'>${data.volumeInfo.title}</h6><br><br>
         <em><span class='suggestion-author'>${data.volumeInfo.authors}</span></em>
+        <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
         <span class='hide_info'>
         <span class='suggestion-description'>${data.volumeInfo.description}</span>
         <span class='suggestion-category'>${data.volumeInfo.categories}</span>
-        <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
         <span class='suggestion-cover'>${data.volumeInfo.imageLinks.smallThumbnail}</span>
         <span class='suggestion-publisher'>${data.volumeInfo.publisher}</span>
         <span class='suggestion-pub_date'>${data.volumeInfo.publishedDate}</span>
@@ -48,57 +48,63 @@
     return data.map(suggestion => {
       return createSuggestionHTML(suggestion)
     })
-    /**data.forEach(suggestion => {
-      $list.append(createSuggestionHTML(suggestion))
-    })
-    
-    return $list[0]
-    */
   }
-
-  $.get({
-    url: "https://www.googleapis.com/books/v1/volumes?q=''&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8",
-    success: function(response) {
-       
-        const list = makeList(response.items)
-        new Awesomplete(document.querySelector("#mylist"),{
-          list: list,
-          // text below is the created suggestion html from createSuggestionHTML
-          replace: function(text) {
-            const $suggestion = $(text.label);
-            console.log("suggestion", $suggestion)
-
-            const title = $suggestion.find('.suggestion-title').text();
-            this.input.value = title;
-            console.log(title)
-
-            const author = $suggestion.find('.suggestion-author').text();
-            $('#author').val(author);
-
-            const cover = $suggestion.find('.suggestion-cover').text();
-            $('#cover').val(cover);
-
-            const img = $suggestion.find('.suggestion-img').attr('src');
-            $("#image2").attr("src", img);
-
-            const category = $suggestion.find('.suggestion-category').text();
-            $('#category').val(category);
-            
-            const rating = $suggestion.find('.suggestion-rate').text();
-            $('#rating').val(rating);
-
-            const publisher = $suggestion.find('.suggestion-publisher').text();
-            $('#publisher').val(publisher);
-
-            const pub_date = $suggestion.find('.suggestion-pub_date').text();
-            $('#pub_date').val(pub_date);
-
-            const description = $suggestion.find('.suggestion-description').text();
-            $('#description').val(description);
-          }
-        });
-      }
-  });
+  $("#mylist").focus()
+  $("#mylist").on('input', () => {
+    
+    const book = $("#mylist").val();
+    $.get({
+      url: `https://www.googleapis.com/books/v1/volumes?q=`+ book + `&fields=items(
+        volumeInfo/authors,
+        volumeInfo/description,
+        volumeInfo/categories,
+        volumeInfo/averageRating,
+        volumeInfo/imageLinks,
+        volumeInfo/publisher,
+        volumeInfo/publishedDate,
+        volumeInfo/title)&maxResults=5&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
+      success: function(response) {
+          console.log(response);
+          const list = makeList(response.items)
+          new Awesomplete(document.querySelector("#mylist"),{
+            list: list,
+            // text below is the created suggestion html from createSuggestionHTML
+            replace: function(text) {
+              const $suggestion = $(text.label);
+              console.log("suggestion", $suggestion)
+  
+              const title = $suggestion.find('.suggestion-title').text();
+              this.input.value = title;
+              console.log(title)
+  
+              const author = $suggestion.find('.suggestion-author').text();
+              $('#author').val(author);
+  
+              const cover = $suggestion.find('.suggestion-cover').text();
+              $('#cover').val(cover);
+  
+              const img = $suggestion.find('.suggestion-img').attr('src');
+              $("#image2").attr("src", img);
+  
+              const category = $suggestion.find('.suggestion-category').text();
+              $('#category').val(category);
+              
+              const rating = $suggestion.find('.suggestion-rate').text();
+              $('#rating').val(rating);
+  
+              const publisher = $suggestion.find('.suggestion-publisher').text();
+              $('#publisher').val(publisher);
+  
+              const pub_date = $suggestion.find('.suggestion-pub_date').text();
+              $('#pub_date').val(pub_date);
+  
+              const description = $suggestion.find('.suggestion-description').text();
+              $('#description').val(description);
+            }
+          });
+        }
+    });
+  })
 </script>
 </body>
 </html>
