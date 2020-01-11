@@ -40,10 +40,26 @@
       return createSuggestionHTML(suggestion)
     })
   }
-  
+
+  // THIS FUNCTION WILL GO TO NEW FOLDER
+
+  function debounce(func, wait, immediate) {
+    let timeout;
+    return function() {
+        let context = this, args = arguments;
+        let later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        let callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
  
   $("#mylist").focus();
-  $("#mylist").on('keyup', () => {
+  $("#mylist").on('keyup', debounce(function() {
     const book = $("#mylist").val();
    
     $.get({
@@ -99,8 +115,7 @@
           });
         }
     });
-  
-  })
+  }, 1000))
 </script>
 </body>
 </html>
