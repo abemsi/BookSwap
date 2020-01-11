@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20200110055117) do
     t.text     "publisher"
     t.text     "pub_date"
     t.string   "image"
-    t.string   "condition"
+    t.text     "book_condition"
     t.string   "location"
     t.text     "cover"
     t.text     "category"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20200110055117) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.string   "postal_code"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
