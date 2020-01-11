@@ -33,11 +33,11 @@
     </p>
   <% end %>
 
-  <% if (@book.condition).blank? %> 
+  <% if (@book.book_condition).blank? %> 
     <% else %>
     <p>
     <strong>Condition:</strong>
-    <%= @book.condition %>
+    <%= @book.book_condition %>
     </p>
     <% end %>
 
@@ -100,13 +100,27 @@
 <!DOCTYPE html>
 <html>
 <script>
+
+// hide an show map
+
   $(document).ready(function() {
       $("#map").hide()
       $("#show_map").on('click', function () {
-        console.log('map clicked')
         $("#map").slideToggle("fast", function() { 
         })
       });
     });
+  
+  // hide an show description
+  
+  $(document).ready(function() {	
+    $("#description_paragraph").hide()	
+    $("#descrip_click").on('click', function () {
+      console.log('description clicked')	
+      $("#description_paragraph").slideToggle("slow", function() { 	
+      })	
+    });	
+  });	
+
 </script>
 </html>

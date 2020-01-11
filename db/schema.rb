@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 20200108193818) do
     t.text     "publisher"
     t.text     "pub_date"
     t.string   "image"
-    t.string   "condition"
+    t.text     "book_condition"
     t.string   "location"
     t.text     "cover"
     t.text     "category"
     t.text     "description"
     t.text     "wishlist"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "chats", force: :cascade do |t|

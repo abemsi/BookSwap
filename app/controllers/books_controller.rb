@@ -40,7 +40,7 @@ class BooksController < ApplicationController
       :title,
       :author,
       :image,
-      :condition,
+      :book_condition,
       :description,
       :category,
       :wishlist,
