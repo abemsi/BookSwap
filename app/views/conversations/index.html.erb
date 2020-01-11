@@ -1,0 +1,30 @@
+<div class="msg-container">
+<div>
+    <h3 class="title is-3">All Messages</h3>
+    <% @conversations.each do |conversation| %>
+      <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+        <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+        <% end %>
+        <% unless current_user.id == recipient %>
+          
+          <div class="card">
+            <div class="card-body ">
+     
+              <h4 class="card-title">
+                  <a href="#pablo"><%= link_to recipient.name, conversation_messages_path(conversation) %></a>
+              </h4>
+              
+            </div>
+          </div>
+         
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+</div>
+
+    

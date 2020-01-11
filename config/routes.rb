@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :search, only: [:search]
   resources :genres, only: [:show]
   resources :users
+
+  resources :conversations do
+    resources :messages
+  end
   
   get '/profile' => 'users#index'
   

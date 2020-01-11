@@ -17,7 +17,7 @@
  @import "bootstrap";
 
 body {
-  padding-top: 60px;
+  padding-top: 75px;
 }
 
 .hidden {
@@ -133,4 +133,12 @@ img {
 
   .masthead {
     height: 200vh;
+  .container-footer {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky; 
+    bottom: 0;
   }
+}

@@ -1,0 +1,74 @@
+<div class="msg-container">
+
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Book Title</h4>
+  </div>
+  <div class="card-img-bottom">
+  <div id="messages">
+  
+  <% if @over_ten %>
+    <%= link_to "Show previous", '?m=all', class:'button is-link' %>
+  <% end %>
+
+    <% @messages.each do |message| %>
+      <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <article>
+          <div class="card bg-info">
+              <div class="card-body">
+                
+                  <h4 class="card-title">
+                      <a href="#pablo"><%= message.body %></a>
+                  </h4>
+
+                  <div class="card-stats">
+                      <div class="author">
+                          <a href="#pablo">
+                            <%= message.message_time %>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </article>
+      <% end %>
+    <% end %>
+    
+    <div class="card-footer">
+      <%= form_for [@conversation, @message] do |f| %>
+        <%= f.text_area :body, class: "form-control", placeholder: "Inquire about a book..." %>
+        <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+        <div>
+          <%= f.submit "Send message", class: "btn btn-primary btn-round" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+</div>
+</div>
+
+
+  <div class="card card-profile ml-auto mr-auto" style="max-width: 360px">
+    
+      <div class="card-body ">
+          <h4 class="card-title"><%= @conversation.recipient.name %></h4>
+          <h6 class="card-category text-gray">
+          </h6>
+      </div>
+      
+      <div class="card-footer justify-content-center">
+          <a href="#pablo" class="btn btn-just-icon btn-twitter btn-round">
+              <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#pablo" class="btn btn-just-icon btn-facebook btn-round">
+              <i class="fa fa-facebook-square"></i>
+          </a>
+          <a href="#pablo" class="btn btn-just-icon btn-google btn-round">
+              <i class="fa fa-google"></i>
+          </a>
+      </div>
+  </div>
+
+
+</div>
