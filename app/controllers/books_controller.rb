@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  
+  before_filter :login_required, :except => [:index, :show, :destroy, :edit]
+  
   def index
     @books = Book.all.order(created_at: :desc)
   end

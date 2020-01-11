@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:show]
   resources :users
   
-  get '/profile' => 'profile#index'
+  get '/profile' => 'users#index'
   
   root to: 'pages#home'
   
