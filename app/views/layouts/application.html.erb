@@ -9,6 +9,14 @@
 </head>
 <body>
 
+<style>
+
+#mylist { 
+  visibility: visible !important;
+}
+
+</style>
+
 
 
 <%= render 'layouts/top_nav' %>
@@ -71,7 +79,7 @@
         volumeInfo/imageLinks,
         volumeInfo/publisher,
         volumeInfo/publishedDate,
-        volumeInfo/title)&maxResults=6&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
+        volumeInfo/title)&maxResults=8&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
       success: function(response) {
           console.log(response);
           const list = makeList(response.items)
@@ -82,14 +90,15 @@
               list: list,
               replace: function(text) {
               const $suggestion = $(text.label);
-              console.log("suggestion", $suggestion)
   
               const title = $suggestion.find('.suggestion-title').text();
               this.input.value = title;
-              console.log(title)
   
               const author = $suggestion.find('.suggestion-author').text();
-              $('#author').val(author);
+              console.log('before rejex', author)
+              output = author.replace(/,/g, ', ')
+              console.log('after rejax', author)
+              $('#author').val(output);
   
               const cover = $suggestion.find('.suggestion-cover').text();
               $('#cover').val(cover);
@@ -115,7 +124,7 @@
           });
         }
     });
-  }, 1000))
+  }, 500))
 </script>
 </body>
 </html>
