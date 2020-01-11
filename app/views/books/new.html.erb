@@ -31,9 +31,15 @@
             <%= form.text_field :author, id: 'author', class: 'form-control', :required => true %>
             </div>
 
-            <div class="form-group">
+            <div class="form-group select">
               <%= form.label :condition %><br>
-              <%= form.select :book_condition, ["Like new","Well read", "Decent", "Seen Better Days"] %>
+              <%= form.select :book_condition, 
+              [ "",
+                "Like new",
+                "Well read", 
+                "Decent", 
+                "Seen Better Days"
+              ], :required => true %>
             </div>
 
             <div class="form-group">
