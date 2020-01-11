@@ -4,8 +4,10 @@
   <div class="card-body">
     <h5 class="card-title"><%= book.title %></h5>
     <% end %>
+    <p> Author: </p>
     <h6 class="card-title"><%= book.author %></h6>
-    <p class="card-text"><%= book.condition %></p>
+    <p> Condition: </p>
+    <p class="card-text"><%= book.book_condition %></p>
     <p> Listed at: </p>
     <p class="card-text"><%= time_ago_in_words(book.created_at) %> ago</p>
     <p><%= book.location %></p>
