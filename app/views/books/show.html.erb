@@ -2,12 +2,10 @@
   <% if (@book.cover) %> 
     <p>
       <%= image_tag @book.cover, :class => "book_cover_img" %>
-      <%= image_tag @book.image.thumb %>
     </p>
+    <% elsif %>
+      <%= image_tag @book.image.thumb %>
     <% else %>
-     <p>
-     <%= image_tag @book.image.thumb %>
-     <p>
       <%= image_tag 'https://apps3.awi.de/YPP/png/no-image.png' %>
   <% end %>
 
@@ -90,7 +88,6 @@
   </p>
     <% else %>
   <% end %>
-<<<<<<< HEAD
   <div id='show_map'>
     <p><u><strong>View map</strong></u></p>
   </div>
@@ -127,7 +124,6 @@
 
 </script>
 </html>
-=======
 
 </div>
 
@@ -155,4 +151,3 @@
     <%= link_to "Login to message #{@book.user.name}", new_user_registration_path %>
     <% end %>
   </div>
->>>>>>> feature/message
