@@ -2,10 +2,12 @@
   <% if (@book.cover) %> 
     <p>
       <%= image_tag @book.cover, :class => "book_cover_img" %>
-    </p>
-    <% elsif %>
       <%= image_tag @book.image.thumb %>
+    </p>
     <% else %>
+     <p>
+     <%= image_tag @book.image.thumb %>
+     <p>
       <%= image_tag 'https://apps3.awi.de/YPP/png/no-image.png' %>
   <% end %>
 
