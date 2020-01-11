@@ -33,11 +33,11 @@
     </p>
   <% end %>
 
-  <% if (@book.condition).blank? %> 
+  <% if (@book.book_condition).blank? %> 
     <% else %>
     <p>
     <strong>Condition:</strong>
-    <%= @book.condition %>
+    <%= @book.book_condition %>
     </p>
     <% end %>
 
