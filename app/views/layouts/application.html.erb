@@ -9,16 +9,7 @@
 </head>
 <body>
 
-<script>
 
-  $(document).ready(function() {
-    $("#description_paragraph").hide()
-    $("#descrip_click").on('click', function () {
-      $("#description_paragraph").slideToggle("slow", function() { 
-      })
-    });
-  });
-</script>
 
 <%= render 'layouts/top_nav' %>
 <%= yield %>
@@ -50,10 +41,11 @@
     })
   }
   
-  $("#mylist").on('input', () => {
-    
+ 
+  $("#mylist").focus();
+  $("#mylist").on('keyup', () => {
     const book = $("#mylist").val();
-    
+   
     $.get({
       url: `https://www.googleapis.com/books/v1/volumes?q=`+ book + `&fields=items(
         volumeInfo/authors,
@@ -63,14 +55,16 @@
         volumeInfo/imageLinks,
         volumeInfo/publisher,
         volumeInfo/publishedDate,
-        volumeInfo/title)&maxResults=10&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
+        volumeInfo/title)&maxResults=6&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
       success: function(response) {
           console.log(response);
           const list = makeList(response.items)
           new Awesomplete(document.querySelector("#mylist"),{
-            list: list,
-            // text below is the created suggestion html from createSuggestionHTML
-            replace: function(text) {
+            
+              // text below is the created suggestion html from createSuggestionHTML
+
+              list: list,
+              replace: function(text) {
               const $suggestion = $(text.label);
               console.log("suggestion", $suggestion)
   
@@ -105,6 +99,7 @@
           });
         }
     });
+  
   })
 </script>
 </body>
