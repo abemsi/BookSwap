@@ -32,14 +32,8 @@
             </div>
 
             <div class="form-group">
-              <%= form.label :condition %>
-              <select class="form-control">
-              <option selected>Choose option</option>
-              <option>Seen better days</option>
-              <option>Well read</option>
-              <option>Good</option>
-              <option>Like new</option>
-              </select>
+              <%= form.label :condition %><br>
+              <%= form.select :book_condition, ["Like new","Well read", "Decent", "Seen Better Days"] %>
             </div>
 
             <div class="form-group">
