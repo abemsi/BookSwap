@@ -23,20 +23,15 @@ ActiveRecord::Schema.define(version: 20200110055117) do
     t.text     "publisher"
     t.text     "pub_date"
     t.string   "image"
-    t.text     "book_condition"
+    t.string   "condition"
     t.string   "location"
     t.text     "cover"
     t.text     "category"
     t.text     "description"
     t.text     "wishlist"
-<<<<<<< HEAD
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-=======
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
->>>>>>> feature/message
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
@@ -84,7 +79,6 @@ ActiveRecord::Schema.define(version: 20200110055117) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "postal_code"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
