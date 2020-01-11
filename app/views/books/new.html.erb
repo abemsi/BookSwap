@@ -23,12 +23,12 @@
 
             <div class="form-group">
             <%= form.label :title %>
-            <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete' %>
+            <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete', :required => true, autofocus: true %>
             </div>
 
             <div class="form-group">
             <%= form.label :author %>
-            <%= form.text_field :author, id: 'author', class: 'form-control' %>
+            <%= form.text_field :author, id: 'author', class: 'form-control', :required => true %>
             </div>
 
             <div class="form-group">
@@ -44,7 +44,7 @@
 
             <div class="form-group">
               <%= form.label :wishlist %>
-              <%= form.text_area :wishlist, class: 'form-control' %>
+              <%= form.text_area :wishlist, class: 'form-control', :required => true %>
             </div>
             
             <div class="form-group hidden">
