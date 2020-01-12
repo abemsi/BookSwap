@@ -40,3 +40,6 @@ log
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+#ignore secrets.yml file
+secrets.yml
