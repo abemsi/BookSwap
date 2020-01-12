@@ -66,11 +66,11 @@
         if (callNow) func.apply(context, args);
     };
 };
- 
+$('#spinner').hide();
   $("#mylist").focus();
   $("#mylist").on('keyup', debounce(function() {
     const book = $("#mylist").val();
-   
+    $('#spinner').show();
     $.get({
       url: `https://www.googleapis.com/books/v1/volumes?q=`+ book + `&fields=items(
         volumeInfo/authors,
@@ -82,6 +82,7 @@
         volumeInfo/publishedDate,
         volumeInfo/title)&maxResults=8&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
       success: function(response) {
+        $('#spinner').hide();
           console.log(response);
           const list = makeList(response.items)
           new Awesomplete(document.querySelector("#mylist"),{
