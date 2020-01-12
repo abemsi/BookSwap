@@ -41,7 +41,7 @@ body {
 
 .book_cover_img:hover {
   position:relative;
-  width:9.6em;
+  width:11.5em;
   height:auto;
   display:block;
 }
@@ -155,4 +155,12 @@ img {
 
 a {
   margin-right: 10px;
+}
+
+#pac-container {
+  display: none;
+}
+
+.nav-link {
+  font: rgba(0, 0, 0, 0.5);
 }
