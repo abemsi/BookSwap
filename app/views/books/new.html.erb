@@ -83,11 +83,12 @@
             <%= form.text_field :location, 
             class: 'form-control', 
             id: 'search', 
-            placeholder: 'Enter Postal Code', 
+            placeholder: 'Enter Postal Code',
+            pattern: '^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$',
             :required => true %>
             </div>
-              <div class='postal_code_ex'>
-            eg: Calgary, AB T3K 5Z5, Canada
+            <div class='postal_code_ex'>
+              T3K 5Z5
             </div>
             <div>
               <div id="map"></div>
