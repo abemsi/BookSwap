@@ -5,7 +5,7 @@ class Book < ActiveRecord::Base
   belongs_to :user
 
   include PgSearch
-  pg_search_scope :search, against: [:title, :author],
+  pg_search_scope :search, against: [:title, :author, :category],
     using: {
       tsearch: {
         prefix: true
