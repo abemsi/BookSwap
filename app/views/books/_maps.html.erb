@@ -31,8 +31,8 @@
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 51.049999, lng: -114.066666},
         zoom: 11,
-        mapTypeId: google.maps.MapTypeId.HYBRID,
-        disableDefaultUI: true,
+        mapTypeId: 'roadmap',
+        disableDefaultUI: true
       });
 
       // Create the search box and link it to the UI element.
@@ -95,7 +95,7 @@
     }
 
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8Lt2lpYXNSrp-lmc4MKm2olxn3nXeWAE&libraries=places&callback=initAutocomplete"
+  <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&callback=initAutocomplete"
        async defer></script>
 </body>
 </html>
