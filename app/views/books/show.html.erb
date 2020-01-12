@@ -91,9 +91,6 @@
     <p>View map</p>
   </div>
 
-  
-
-
   <%= render 'books/maps' %>
 
   <!DOCTYPE html>
@@ -107,24 +104,25 @@
       
       let message = '<%= (@book.location) %>';
         $(document).ready(function() {
-          $("#map").hide()
+         
           $("#show_map").on('click', function () {
             
             $("#pac-input").val(message)
             $("#pac-input").focus()
             setTimeout(function(){
               $("#pac-input").keypress(function(){
-                alert('keypress triggered')
                }).trigger(e)
+               e.preventDefault();
               return false;
             }, 600);
             
             $(document).on('keypress',function(e) {
-              if(e.which == 13) {
-                  console.log('You pressed enter!');
+              if (e.which == 13) {
+                console.log('You pressed enter!');
               }
-          });
-            $("#map").show()
+            });
+
+          
             })
         
           $("#description_paragraph").hide()	
