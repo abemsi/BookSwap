@@ -10,15 +10,8 @@
   
     <a class="navbar-brand" href="/">BookSwap</a>
 
-    <div class="searchbar">
-      <%= form_tag(search_path, method: :get, class: "form-inline") do %>  
-        <div class="form-group no-border has-white">  
-          <%= search_field_tag :term, params[:term], placeholder: "Search books", class: "form-control" %>  
-        </div>
-        <button type="submit" class="btn btn-white btn-just-icon">
-          <i class="material-icons">search</i>
-        </button>
-      <% end %>
+
+      
     </div>
 
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -42,7 +35,7 @@
       </li>
 
         <li class="nav-item active">
-          <a class="nav-link" href="/books/new">List a book</a>
+          <a class="nav-link" href="/books/new">List a book<span class="sr-only">(current)</span></a>
         </li>
 
         <% else %>
