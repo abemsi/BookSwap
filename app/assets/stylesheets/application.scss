@@ -135,3 +135,21 @@ img {
     position: sticky; 
     bottom: 0;
   }
+
+  #show_map {
+    text-align: center;
+    color: #fff;
+    background-color: #9c27b0;
+    border-color: #9c27b0;
+    width: 100px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+  }
+
+  .postal_code_ex {
+    color: grey;
+    opacity: 0.5;
+  }
+
