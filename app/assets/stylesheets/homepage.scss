@@ -1,10 +1,14 @@
 .masthead {
-  height: 100vh;
-  min-height: 500px;
+  height: 91vh;
+  min-height: 400px;
   background-image: url(../images/reading.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.greeting {
+  padding-top: 100px;;
 }
 
 #about {
