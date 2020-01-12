@@ -42,16 +42,16 @@
       </li>
 
         <li class="nav-item active">
-          <a class="nav-link" href="/books/new">List a book</a>
+          href="/books/new">List a book
         </li>
 
         <% else %>
         <li class="nav-item active">
-          <a class="nav-link"><%= link_to 'Login', '/login' %></a>
+          <a class="nav-login"><%= link_to 'Login', '/login' %></a>
         </li>
 
         <li class="nav-item active">
-          <a class="nav-link"><%= link_to 'Signup', '/signup' %></a>
+         <%= link_to 'Signup', '/signup' %>
         </li>
       <% end %>
     </ul>
