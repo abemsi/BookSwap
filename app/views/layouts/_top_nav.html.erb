@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
   <div class="container">
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="sr-only">Toggle navigation</span>
       <span class="navbar-toggler-icon"></span>
@@ -9,7 +8,6 @@
     </button>
   
     <a class="navbar-brand" href="/">BookSwap</a>
-
     <div class="searchbar">
       <%= form_tag(search_path, method: :get, class: "form-inline") do %>  
         <div class="form-group no-border has-white">  
@@ -20,43 +18,38 @@
         </button>
       <% end %>
     </div>
-
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-
-      <li class="nav-item active">
-        <a class="nav-link" href="/books">Books</a>
-      </li>
-
-      <% if current_user %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My Account
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item">Hello, <%= current_user.name %></a>
-          <a class="dropdown-item">My Swaps</a>
-          <a class="dropdown-item" href="/conversations">Messages</a>
-          <a class="dropdown-item" href="/logout">Logout</a>
-        </div>
-      </li>
-
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          href="/books/new">List a book
+          <a class="nav-link" href="/books">Books</a>
         </li>
 
-        <% else %>
-        <li class="nav-item active">
-          <a class="nav-login"><%= link_to 'Login', '/login' %></a>
-        </li>
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              My Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item">Hello, <%= current_user.name %></a>
+              <a class="dropdown-item">My Swaps</a>
+              <a class="dropdown-item" href="/conversations">Messages</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </li>
+          <li class="nav-item active">
+            href="/books/new">List a book
+          </li>
 
-        <li class="nav-item active">
-         <%= link_to 'Signup', '/signup' %>
-        </li>
-      <% end %>
-    </ul>
-
-
-  </div>
+          <% else %>
+            <li class="nav-item active">
+              <a class="nav-login"><%= link_to 'Login', '/login' %></a>
+            </li>
+          <li class="nav-item active">
+          <%= link_to 'Signup', '/signup' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
