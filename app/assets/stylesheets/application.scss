@@ -42,13 +42,12 @@ body {
 
 .book_cover_img:hover {
   position:relative;
-  width:9.6em;
+  width:11.5em;
   height:auto;
   display:block;
 }
 
 .listing_details {
-  padding-top: 100px;
   padding-left: 50px;
 }
 
@@ -106,9 +105,6 @@ img {
     padding: 0 !important;
   }
 
-  a {
-    margin: 10px;
-  }
 
  #descrip_click {
    margin-bottom: 40px !important;
@@ -118,9 +114,9 @@ img {
     margin-top: -1;
   }
 
-  .image2 {
+  #image2 {
     -webkit-filter: drop-shadow(10px 10px 10px #222);
-      filter: drop-shadow(10px 10px 10px #222);
+    filter: drop-shadow(10px 10px 10px #222);
   }
 
   h1 {
@@ -140,3 +136,33 @@ img {
     position: sticky; 
     bottom: 0;
   }
+
+  #show_map {
+    text-align: center;
+    color: #fff;
+    background-color: #9c27b0;
+    border-color: #9c27b0;
+    width: 100px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+  }
+
+  .postal_code_ex {
+    color: grey;
+    opacity: 0.5;
+  }
+
+a {
+  margin-right: 10px;
+}
+
+#pac-container {
+  display: none;
+}
+
+.nav-link {
+  font: rgba(0, 0, 0, 0.5);
+}
+

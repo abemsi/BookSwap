@@ -3,7 +3,8 @@ function initAutocomplete() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 51.049999, lng: -114.066666},
     zoom: 13,
-    mapTypeId: 'roadmap'
+    mapTypeId: 'roadmap',
+    disableDefaultUI: true,
   });
 
   // Create the search box and link it to the UI element.
@@ -46,13 +47,14 @@ function initAutocomplete() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
-
+      
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
         map: map,
         icon: icon,
         title: place.name,
-        position: place.geometry.location
+        position: place.geometry.location,
+        disableDefaultUI: true,
       }));
 
       if (place.geometry.viewport) {
@@ -66,6 +68,6 @@ function initAutocomplete() {
   });
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8DHc6XyGKuFqu9QYCuJ7nK5RCKVsFLM8&libraries=places&callback=initAutocomplete"
+<script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&callback=initAutocomplete"
    async defer>
 </script>
