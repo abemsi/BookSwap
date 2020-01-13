@@ -12,12 +12,8 @@
     <p class="card-text"><%= time_ago_in_words(book.created_at) %> ago</p>
     <p> Listed by: </p>
     <h6 class="card-title"><%= book.user.name %></h6>
-    
-    <% if book_author(@book) %>
     <%= image_tag src='bin.png',  height: 20, width: 42 %>
     <%= image_tag src='edit.png',  height: 20, width: 42 %>
-    <% else %>
-    <% end %>
   </div>
 </div>
 
