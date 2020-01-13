@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 20200110055117) do
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
+    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    
   end
 
   create_table "genres", force: :cascade do |t|
@@ -79,6 +81,7 @@ ActiveRecord::Schema.define(version: 20200110055117) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.string   "postal_code"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
