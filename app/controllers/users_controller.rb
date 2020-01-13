@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
+
   def new
+  end
+
+  def index 
+    @books = Book.where(:user_id => current_user.id)
   end
 
   def create

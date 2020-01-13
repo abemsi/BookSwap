@@ -35,18 +35,34 @@ body {
   align-self: center;
 }
 
-.book_cover_img {
+#book_cover_img {
   -webkit-filter: drop-shadow(10px 10px 10px #222);
     filter: drop-shadow(10px 10px 10px #222);
+    height: 200px;
+    width: 150px;
 }
 
-.book_cover_img:hover {
-  position:relative;
-  width:11.5em;
-  height:auto;
-  display:block;
+#book_cover_img:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
 .listing_details {
   padding-left: 50px;
 }
@@ -138,15 +154,25 @@ img {
   }
 
   #show_map {
-    text-align: center;
-    color: #fff;
-    background-color: #9c27b0;
-    border-color: #9c27b0;
-    width: 100px;
-    height: 25px;
-    border: 1px solid black;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #30a8ed;
+    padding: 10px;
+    height: 40px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+  }
+  
+  #show_map:hover {
+    background: #58c0fd;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
   }
 
   .postal_code_ex {
@@ -162,7 +188,23 @@ a {
   display: none;
 }
 
+#pac-input {
+  display: none;
+}
+
 .nav-link {
   font: rgba(0, 0, 0, 0.5);
+}
+
+
+.awesomplete {
+  display: inline-block;
+  position: relative;
+  min-width: 18em;
+  
+  & mark {
+    background: hsla(20, 70%, 60%, .5);
+  }
+
 }
 
