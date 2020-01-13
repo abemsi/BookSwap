@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :messages
   end
   
-  get '/profile' => 'users#index'
+  
   
   root to: 'pages#home'
   
