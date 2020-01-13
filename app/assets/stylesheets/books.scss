@@ -26,3 +26,19 @@
 #description_paragraph {
   width: 800px;
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 750px;
+  width: 200px;
+  border-right: 1px solid #D7DBDD;
+  background-color: #FCFDFD;
+  padding: 10px;
+}
+
+.books-index {
+  display: flex;
+  flex-direction: row;
+}

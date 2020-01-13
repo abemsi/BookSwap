@@ -1,20 +1,16 @@
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 18rem; max-height:450px; overflow:auto;">
   <%= link_to book do %>
   <img class="card-img-top"><%= image_tag book.cover, :class => 'book_cover_img' %></img>
   <div class="card-body">
     <h5 class="card-title"><%= book.title %></h5>
+    <p class="card-subtitle"><strong><%= book.author %></strong></p>
     <% end %>
-    <p> Author: </p>
-    <h6 class="card-title"><%= book.author %></h6>
-    <p> Condition: </p>
-    <p class="card-text"><%= book.book_condition %></p>
-    <p> Listed at: </p>
-    <p class="card-text"><%= time_ago_in_words(book.created_at) %> ago</p>
-    <p> Listed by: </p>
-    <h6 class="card-title"><%= book.user.name %></h6>
-    <%= image_tag src='bin.png',  height: 20, width: 42 %>
-    <%= image_tag src='edit.png',  height: 20, width: 42 %>
+    <br>
+    <p class="card-text">Condition: <%= book.book_condition %></p>
   </div>
+  <div class="card-footer">
+      <small class="text-muted">Posted <%= time_ago_in_words(book.created_at) %> ago</small>
+    </div>
 </div>
 
 

@@ -1,38 +1,55 @@
-<h1> Listing Details </h1>
+
+
+<div class="card mb-3" style="max-width: 790px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <% if (@book.cover) %> 
+        <%= image_tag @book.cover, :id => "book_cover_img" %>
+      <% elsif %>
+        <%= image_tag @book.image.thumb %>
+      <% else %>
+        <%= image_tag 'https://apps3.awi.de/YPP/png/no-image.png' %>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"> 
+          <% if (@book.title).eql?('undefined' || '') %> 
+          <% else %>
+            <%= @book.title %>
+          <% end %>
+        </h5>
+        <h6 class="card-subtitle">
+          <% if (@book.author).eql?('undefined' || '') %> 
+          <% else %>
+            <%= @book.author %>
+          <% end %>
+        </h6>
+        <br>
+        <p class="card-text">
+          <% if (@book.description).eql?('undefined' || '') %> 
+          <% else %>
+            <%= @book.description %>
+          <% end %>
+        </p>
+        <p class="card-text"><small class="text-muted">
+          <% if (@book.category).eql?('undefined' || '') %> 
+          <% else %>
+            <%= @book.category %>
+          <% end %>
+        </p>
+        <p class="card-text"><small class="text-muted">
+          <% if (@book.book_condition).eql?('undefined' || '') %> 
+          <% else %>
+            <%= @book.book_condition %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="listing_details">
-  <% if (@book.cover) %> 
-    <p>
-      <%= image_tag @book.cover, :id => "book_cover_img" %>
-    </p>
-    <% elsif %>
-      <%= image_tag @book.image.thumb %>
-    <% else %>
-      <%= image_tag 'https://apps3.awi.de/YPP/png/no-image.png' %>
-  <% end %>
-
-  <% if (@book.title).eql?('undefined' || '') %> 
-    <% else %>
-    <p>
-      <strong>Title:</strong>
-      <%= @book.title %>
-    </p>
-  <% end %>
-
-  <% if (@book.author).eql?('undefined' || '') %> 
-    <% else %>
-    <p>
-      <strong>Author:</strong>
-      <%= @book.author %>
-    </p>
-  <% end %>
-
-  <% if (@book.category).eql?('undefined' || '') %> 
-    <% else %>
-    <p>
-      <strong>Genre:</strong>
-      <%= @book.category %>
-    </p>
-  <% end %>
 
   <% if (@book.book_condition).blank? %> 
     <% else %>
@@ -42,37 +59,6 @@
     </p>
     <% end %>
 
-    <% if (@book.publisher).eql?('undefined' || '') %> 
-    <% else %>
-    <p>
-      <strong>Publisher:</strong>
-      <%= @book.publisher %>
-    </p>
-  <% end %>
-
-  <% if (@book.pub_date).eql?('undefined' || '') %>
-    <% else %>
-    <p>
-      <strong>Publisher Date:</strong>
-      <%= @book.pub_date %>
-    </p>
-  <% end %>
-
-  <% if (@book.rating).eql?("undefined" || '') %> 
-    <% else %>
-    <p>
-  <strong>Rating:</strong>
-  <%= @book.rating %>/5
-  </p>
-    <% end %>
-
-    <% if (@book.description).eql?('undefined' || '') %> 
-    <% else %>
-      <strong id='descrip_click'><u>View Description</u></strong>
-    <p id='description_paragraph'>
-      <%= @book.description %>
-    </p>
-  <% end %>
 
     <% if (@book.wishlist).eql?('undefined' || '') %> 
     <p>
@@ -112,16 +98,21 @@
     </html>
 </div>
 
-<div class="column is-3 is-offset-1">
-    <% if book_author(@book) %>
-      <div class="bg-light pa3 mb4 border-radius-3">
-        <p class="f6 pb1">Author actions:</p>
-        <div class="button-group">
-          
-          <%= link_to "Back", books_path, class: "button is-small" %>
-        </div>
-      </div>
+<div class="card text-center" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @book.user.name %></h5>
+    
+    <a href="#" class="btn btn-primary">Send Message</a>
+  </div>
+</div>
+
+<% if current_user.id != @book.user_id %>
+      <%= link_to "Send message to #{@book.user.name}", conversations_path(sender_id: current_user.id, recipient_id: @book.user.id), method: 'post', class:"button is-link" %>
+   
     <% end %>
+
+<div class="column is-3 is-offset-1">
+    
     <div class="listing_details">
       <p>
         <strong>Swap Author: </strong>
@@ -129,13 +120,5 @@
       </p>
 
     
-    <% if current_user.id != @book.user_id %>
-      <%= link_to "Send message to #{@book.user.name}", conversations_path(sender_id: current_user.id, recipient_id: @book.user.id), method: 'post', class:"button is-link" %>
-    <% elsif current_user.id == @book.user_id  %>
-      <%= link_to "Conversations", conversations_path %>
-    <% else %>
-
-    <%= link_to "Login to message #{@book.user.name}", new_user_registration_path %>
-    <% end %>
   </div>
  
