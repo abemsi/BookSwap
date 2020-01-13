@@ -82,11 +82,6 @@
     <% else %>
   <% end %>
 
-  <p>
-    <strong>Location:</strong>
-    <%= @book.location %>
-  </p>
-  
   <div id='show_map'>
     <p>View map</p>
   </div>
@@ -96,41 +91,20 @@
   <!DOCTYPE html>
     <html>
       <script>
-     
-
-      e = jQuery.Event("keypress")
-      e.which = 13
+      $( document ).ready(function() {
+        $('#map').hide();
+        let postal_code = '<%= @book.location %>'
+        document.getElementById('show_map').onclick = function () {
+          $('#map').show(); 
+          let input = document.getElementById('pac-input');
+          $('#pac-input').focus()
+          $('#pac-input').val(postal_code)
       
-      
-      let message = '<%= (@book.location) %>';
-        $(document).ready(function() {
-         
-          $("#show_map").on('click', function () {
-            
-            $("#pac-input").val(message)
-            $("#pac-input").focus()
-            setTimeout(function(){
-              $("#pac-input").keypress(function(){
-               }).trigger(e)
-               e.preventDefault();
-              return false;
-            }, 600);
-            
-            $(document).on('keypress',function(e) {
-              if (e.which == 13) {
-                console.log('You pressed enter!');
-              }
-            });
-
-          
-            })
-        
-          $("#description_paragraph").hide()	
-          $("#descrip_click").on('click', function () {
-            $("#description_paragraph").slideToggle("slow", function() { 	
-            })	
-          });	
-        });	
+          google.maps.event.trigger(input, 'focus', {});
+          google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
+          google.maps.event.trigger(this, 'focus', {});
+        }; 
+        });
       </script>
     </html>
 </div>
