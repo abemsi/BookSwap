@@ -2,7 +2,7 @@
 <div class="listing_details">
   <% if (@book.cover) %> 
     <p>
-      <%= image_tag @book.cover, :class => "book_cover_img" %>
+      <%= image_tag @book.cover, :id => "book_cover_img" %>
     </p>
     <% elsif %>
       <%= image_tag @book.image.thumb %>
@@ -104,6 +104,9 @@
           google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
           google.maps.event.trigger(this, 'focus', {});
         }; 
+        $("#description_paragraph").hide()		
+        $("#descrip_click").on('click', function () {	
+          $("#description_paragraph").slideToggle("slow")
         });
       </script>
     </html>
