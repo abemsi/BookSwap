@@ -43,54 +43,31 @@ body {
 }
 
 #book_cover_img {
-  -webkit-filter: drop-shadow(10px 10px 10px #222);
-    filter: drop-shadow(10px 10px 10px #222);
+  -webkit-filter: drop-shadow(10px 10px 7px #6b676b);
+    filter: drop-shadow(10px 10px 7px #6b676b);
     height: 200px;
     width: 150px;
     margin-left: 60px;
 }
 
 .book_image_img {
-  -webkit-filter: drop-shadow(10px 10px 10px #222);
-    filter: drop-shadow(10px 10px 10px #222);
+  -webkit-filter: drop-shadow(10px 10px 7px #6b676b);
+    filter: drop-shadow(10px 10px 7px #6b676b);
     margin-top: 40px;
 }
 
-#book_cover_img:hover {
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
+.suggestion-img {
+  width: 60px;
+  height: 80px;
+}
+.suggestion-title {
+  font-weight: bold;
+  padding-bottom: 5px;
 }
 
-@keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
+.suggestion-author {
+  font-size: 3.5mm;
 }
-
-
-  .suggestion-img {
-    width: 60px;
-    height: 60px;
-  }
-  .suggestion-title {
-    font-weight: bold;
-    padding-bottom: 5px;
-  }
-  
-  .suggestion-author {
-    font-size: 3.5mm;
-  }
 
   .suggestion {
     display: flex;
@@ -102,11 +79,12 @@ body {
   }
   .suggestion-img {
       width: 60px;
-      height: 60px;
+      height: 80px;
   }
   .suggestion-title {
     font-weight: bold;
     padding-bottom: 5px;
+    padding-left: 5px;
     margin-right: 5px;
   }
 
@@ -139,8 +117,8 @@ body {
   }
 
   #image2 {
-    -webkit-filter: drop-shadow(10px 10px 10px #222);
-    filter: drop-shadow(10px 10px 10px #222);
+    -webkit-filter: drop-shadow(10px 10px 7px #6b676b);
+    filter: drop-shadow(10px 10px 7px #6b676b);
   }
 
   h1 {
