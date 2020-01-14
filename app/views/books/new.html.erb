@@ -1,49 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-  </head>
-  <body>
+
     <section class="books-new">
 
-      <header>
-        <h1>List a Book</h1>
-      </header>
+      <div class="swap-form row">
+        <div class="">
 
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-1">
+        <header>
+          <h1>Create a Swap</h1>
+        </header>
+
           <%= form_for :book, url: books_new_path do |form| %>
-            
-            <%= image_tag src='', id: 'image2' %>
-
+            <br>
+            <%= image_tag src='', id: 'image2' %><br>
+            <br>
             <div class="form-group">
-            <%= form.label :title %><br>
-            <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete', :required => true, autofocus: true %>
+            
+            <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete', placeholder: "Title", :required => true, autofocus: true %>
             </div>
 
             <div class="form-group">
-            <%= form.label :author %>
-            <%= form.text_field :author, id: 'author', class: 'form-control', :required => true %>
+            
+            <%= form.text_field :author, id: 'author', class: 'form-control', placeholder: "Author", :required => true %>
             </div>
 
-            <%= form.label :image %><br>
-            <%= form.file_field :image %>
-            
+            <%= form.label "Add a photo:" %><br>
+            <%= form.file_field :image %><br>
+            <br>
             <div class="form-group">
-              <%= form.label :condition %><br>
+              <%= form.label "What condition is your book in?" %><br>
               <%= form.select :book_condition, 
               [ "",
                 "Like new",
+                "Good", 
                 "Well read", 
-                "Decent", 
                 "Seen Better Days"
               ], :required => true %>
             </div>
 
             <div class="form-group">
-              <%= form.label :comments %>
-              <%= form.text_area :wishlist, class: 'form-control', :required => true %>
+              
+              <%= form.text_area :wishlist, class: 'form-control', placeholder: 'Swap details and comments', :required => true %>
             </div>
             
             <div class="form-group hidden">
@@ -72,24 +67,22 @@
             <%= form.text_field :description, id: 'description', class: 'form-control' %>
             </div>
 
-            <div class="form-group">
+            <div class="form-group hidden">
               <%= form.label :category %>
               <%= form.text_field :category, class: 'form-control', id: 'category' %>
             </div>
 
            
             <div class="form-group">
-            <%= form.label :location %>
+            <%= form.label "Enter your postal code:" %>
             <%= form.text_field :location, 
             class: 'form-control', 
             id: 'search', 
-            placeholder: 'Enter Postal Code',
+            placeholder: 'Ex. T3K 5Z5',
             pattern: '^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$',
             :required => true %>
             </div>
-            <div class='postal_code_ex'>
-              T3K 5Z5
-            </div>
+
             <div>
               <div id="map"></div>
             </div>
@@ -101,5 +94,3 @@
       </div>
     <%= render 'books/list_map' %>     
     </section>
-  </body>
-</html>
