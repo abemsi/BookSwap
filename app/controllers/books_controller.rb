@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user, except: [:index, :show]
 
   # GET /books
@@ -29,6 +29,11 @@ class BooksController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    @book.update(book_params)
+    redirect_to @book, notice: 'Book was successfully updated!'
   end
 
   def destroy
