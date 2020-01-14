@@ -15,8 +15,8 @@
 }
 
 #map {
-  height: 500px;
-  width: 600px;
+  height: 300px;
+  width: 400px;
 }
 
 .row {
@@ -41,4 +41,15 @@
 .books-index {
   display: flex;
   flex-direction: row;
+}
+
+.books-new {
+  display:flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 540px;
+}
+
+.swap-form {
+  width: 100%;
 }
