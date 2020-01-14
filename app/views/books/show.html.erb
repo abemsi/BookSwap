@@ -1,15 +1,15 @@
 <body class='show-body'>
-<div class="card mb-3" style="max-width: 1200px;">
+<div class="card mb-3" style="max-width: 900px;">
   <div class="row no-gutters">
       <%= image_tag @book.cover, :id => "book_cover_img" %>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"> 
+        <h3 class="card-title"> 
           <% if (@book.title).eql?('undefined' || '') %> 
           <% else %>
-            <h3 class="card-title">Author Details</h3>
+            <%= @book.title %>
           <% end %>
-        </h5>
+        </h3>
         <h6 class="card-subtitle">
           <% if (@book.author).eql?('undefined' || '') %> 
           <% else %>
@@ -30,21 +30,15 @@
             <%= @book.category %>
           <% end %>
         </p></small>
-        <p class="card-text"><small class="text-muted">
-          <% if (@book.book_condition).eql?('undefined' || '') %> 
-          <% else %>
-            <%= @book.book_condition %>
-          <% end %>
-        </p></small>
       </div>
     </div>
   </div>
 </div>
 
 <% if current_user.present? %>
-  <div class="card mb-3" style="max-width: 400px;">
+  <div class="card card-profile mb-3" style="max-width: 400px; max-height:">
     <div class="card-body">
-      <h3 class="card-title">Author Details</h3>
+      <h3 class="card-title"><%= @book.user.name %></h3>
       <%= image_tag "user.png", height: 50, width: 50 %>
       <% if current_user.id == @book.user_id %>
         <%= link_to "Messages", conversations_path %>
@@ -61,52 +55,53 @@
           <p class="card-text"> Consider adding a description for your book </p>
         <% end %>
       <% else %>
-        <h5 class="card-title"><%= @book.user.name %></h5>
-        <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class:"btn-primary" %>
-        <h5 class="card-title"><%= @book.user.name %>'s bio:</h5><%= @book.wishlist %> 
+        
+        <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class: "btn btn-primary" %>
+        
       <% end %>
     </div>
-    <div id='show_map'>
-      <p>See Location</p>
-    </div>
+    
   </div>
 <% else %>
-  <div class="card mb-3" style="max-width: 400px;">
+  
     <div class="card-body">
-      <h3 class="card-title">Author Details</h3>
+      <h3 class="card-title"><%= @book.user.name %></h3>
       <%= button_to "Login to message #{@book.user.name}", "/login", class:"btn-primary" %>
-    </div>
+    
   </div>
 <% end %>
 
-  <div class="card mb-4" style="max-width: 790px;">
-    <div class="row no-gutters">
+
+<div class="card mb-3" style="max-width: 900px; max-height: 400px;">
+  <div class="row no-gutters">
       <% if (@book.image).present? %> 
-        <%= image_tag @book.image, :class => 'book_image_img', height: 150, width: 200 %>
-      <% else %>
-        <%= image_tag 'https://iaaglobal.org/storage/bulk_images/no-image.png', height: 150, width: 200 %>
-      <% end %>
+      <%= image_tag @book.image, :class => 'book_image_img', height: 240, width: 200 %>
+    <% else %>
+      <%= image_tag 'https://iaaglobal.org/storage/bulk_images/no-image.png', height: 240, width: 200 %>
+    <% end %>
+    <div class="col-md-8">
       <div class="card-body">
-        <h3 class="card-title">Posting Details</h3>
-        <h5 class="card-title">Comments</h5>
+        <h5 class="card-title"> 
+          Swap Details
+        </h5>
+        <h6 class="card-subtitle">
+          Condition - <%= @book.book_condition %>
+        </h6>
+        <br>
         <p class="card-text">
           <%= @book.wishlist %>
         </p>
+        <p class="card-footer"><small class="text-muted">
+          Posted <%= time_ago_in_words(@book.created_at) %> ago
+        </p></small>
       </div>
     </div>
   </div>
+</div>
   
+<div style="max-width: 900px; max-height: 400px;">
   <%= render 'books/maps' %>
-  <div class="listing_details">
-    <% if (@book.wishlist).eql?('undefined' || '') %> 
-    <p>
-      <strong>Wishlist:</strong>
-      <%= @book.wishlist %>
-    </p>
-    <% else %>
-  <% end %>
-  </div>
-</body>
+</div>
 
 <!DOCTYPE html>
     <html>
