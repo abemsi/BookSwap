@@ -19,10 +19,9 @@
   width: 400px;
 }
 
-.row {
-  padding: 60px;
+.books.row {
+  padding-top:0!important;
 }
-
 #description_paragraph {
   width: 800px;
 }
@@ -38,9 +37,15 @@
   padding: 10px;
 }
 
+.card-title {
+  justify-self: flex-start;
+  padding-top: 50px;
+}
 .books-index {
   display: flex;
   flex-direction: row;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .books-new {
