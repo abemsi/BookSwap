@@ -1,96 +1,59 @@
 
-    <section class="books-new">
+<section class="books-new">
+  <div class="swap-form row">
+    <h1 class='card-title'>All Books</h1>
+    <%= form_for :book, url: books_new_path do |form| %><br>
+      <%= image_tag src='', id: 'image2' %><br><br>
+      <div class="form-group">
+        <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete', placeholder: "Title", :required => true, autofocus: true %>
+        <%= form.text_field :author, id: 'author', class: 'form-control', placeholder: "Author", :required => true %>
+        
+        <%= form.label "Add a photo:" %><br>
+        <%= form.file_field :image %><br><br>
+          
+        <%= form.label "What condition is your book in?" %><br>
+        <%= form.select :book_condition,[ "","Like new","Good","Well read","Seen Better Days"], :required => true %>
+          
+        <%= form.text_area :wishlist, class: 'form-control', placeholder: 'Swap details and comments', :required => true %>
+      
+      </div> 
+      <div class="form-group hidden">
 
-      <div class="swap-form row">
-        <div class="">
-
-        <header>
-          <h1>Create a Swap</h1>
-        </header>
-
-          <%= form_for :book, url: books_new_path do |form| %>
-            <br>
-            <%= image_tag src='', id: 'image2' %><br>
-            <br>
-            <div class="form-group">
-            
-            <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete', placeholder: "Title", :required => true, autofocus: true %>
-            </div>
-
-            <div class="form-group">
-            
-            <%= form.text_field :author, id: 'author', class: 'form-control', placeholder: "Author", :required => true %>
-            </div>
-
-            <%= form.label "Add a photo:" %><br>
-            <%= form.file_field :image %><br>
-            <br>
-            <div class="form-group">
-              <%= form.label "What condition is your book in?" %><br>
-              <%= form.select :book_condition, 
-              [ "",
-                "Like new",
-                "Good", 
-                "Well read", 
-                "Seen Better Days"
-              ], :required => true %>
-            </div>
-
-            <div class="form-group">
-              
-              <%= form.text_area :wishlist, class: 'form-control', placeholder: 'Swap details and comments', :required => true %>
-            </div>
-            
-            <div class="form-group hidden">
-            <%= form.label :publisher %>
-            <%= form.text_field :publisher, id: 'publisher', class: 'form-control' %>
-            </div>
-            
-            <div class="form-group hidden">
-            <%= form.label :rating %>
-            <%= form.text_field :rating, id: 'rating', class: 'form-control' %>
-            </div>
-            
-            <div class="form-group hidden">
-            <%= form.label :pub_date %>
-            <%= form.text_field :pub_date, id: 'pub_date', class: 'form-control' %>
-            </div>
-            
-            <div class="form-group hidden">
-            <%= form.label :cover %>
-            <%= form.text_field :cover, id: 'cover', class: 'form-control' %>
-            </div>
-            
-            
-            <div class="form-group hidden">
-            <%= form.label :description %>
-            <%= form.text_field :description, id: 'description', class: 'form-control' %>
-            </div>
-
-            <div class="form-group hidden">
-              <%= form.label :category %>
-              <%= form.text_field :category, class: 'form-control', id: 'category' %>
-            </div>
-
-           
-            <div class="form-group">
-            <%= form.label "Enter your postal code:" %>
-            <%= form.text_field :location, 
-            class: 'form-control', 
-            id: 'search', 
-            placeholder: 'Ex. T3K 5Z5',
-            pattern: '^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$',
-            :required => true %>
-            </div>
-
-            <div>
-              <div id="map"></div>
-            </div>
-            <br>
-
-            <%= form.submit 'List Book', class: 'btn btn-primary' %>
-          <% end %>
-        </div>
+        <%= form.label :publisher %>
+        <%= form.text_field :publisher, id: 'publisher', class: 'form-control' %>
+        
+        <%= form.label :rating %>
+        <%= form.text_field :rating, id: 'rating', class: 'form-control' %>
+        
+        <%= form.label :pub_date %>
+        <%= form.text_field :pub_date, id: 'pub_date', class: 'form-control' %>
+        
+        <%= form.label :cover %>
+        <%= form.text_field :cover, id: 'cover', class: 'form-control' %>
+        
+        <%= form.label :description %>
+        <%= form.text_field :description, id: 'description', class: 'form-control' %>
+      
+        <%= form.label :category %>
+        <%= form.text_field :category, class: 'form-control', id: 'category' %>
+      
       </div>
-    <%= render 'books/list_map' %>     
-    </section>
+      <div class="form-group">
+
+        <%= form.label "Enter your postal code:" %>
+        <%= form.text_field :location, 
+        class: 'form-control', 
+        id: 'search', 
+        placeholder: 'Ex. T3K 5Z5',
+        pattern: '^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$',
+        :required => true %>
+      </div>
+
+      <div id="map"></div><br>
+      <%= form.submit 'List Book', class: 'btn btn-primary' %>
+    
+    <% end %>
+
+  </div> 
+</section>
+<%= render 'books/list_map' %>   
