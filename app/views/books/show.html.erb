@@ -1,18 +1,10 @@
-
-
-<div class="card mb-3" style="max-width: 790px;">
+<body class='show-body'>
+<div class="card mb-3" style="max-width: 1200px;">
   <div class="row no-gutters">
-    <div class="col-md-4">
-      <% if (@book.cover) %> 
-        <%= image_tag @book.cover, :id => "book_cover_img" %>
-      <% elsif %>
-        <%= image_tag @book.image.thumb %>
-      <% else %>
-        <%= image_tag 'https://apps3.awi.de/YPP/png/no-image.png' %>
-      <% end %>
-    </div>
+      <%= image_tag @book.cover, :id => "book_cover_img" %>
     <div class="col-md-8">
       <div class="card-body">
+      <h3 class="card-title">Listing Details</h3>
         <h5 class="card-title"> 
           <% if (@book.title).eql?('undefined' || '') %> 
           <% else %>
@@ -37,29 +29,60 @@
           <% else %>
             <%= @book.category %>
           <% end %>
-        </p>
+        </p></small>
         <p class="card-text"><small class="text-muted">
           <% if (@book.book_condition).eql?('undefined' || '') %> 
           <% else %>
             <%= @book.book_condition %>
           <% end %>
-        </p>
+        </p></small>
       </div>
     </div>
   </div>
 </div>
 
-<div class="listing_details">
+<% if current_user.present? %>
+  <div class="card mb-3" style="max-width: 400px;">
+    <div class="card-body">
+      <h3 class="card-title">Author Details</h3>
+      <%= image_tag "user.png", height: 50, width: 65 %>
+      <% if current_user.id == @book.user_id %>
+        <%= button_to "Edit Post", method: 'post', class:"btn-primary" %>
+        <%= button_to "Delete Post", method: 'post', class:"btn-primary" %>
+        <% if !(@book.image).present? %> 
+        <h6 class="card-title"> Consider adding an image so users can view it </h6>
+        <% end %>
+      <% else %>
+        <h5 class="card-title"><%= @book.user.name %></h5>
+        <a><%= button_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @book.user.id), method: 'post', class:"btn-primary" %> </a>
+        <h5> <%= @book.user.name %>'s Bio:</h5><%= @book.wishlist %> 
+      <% end %>
+    </div>
+    <div id='show_map'>
+      <p>See Location</p>
+    </div>
+  </div>
+<% end %>
 
-  <% if (@book.book_condition).blank? %> 
-    <% else %>
-    <p>
-    <strong>Condition:</strong>
-    <%= @book.book_condition %>
-    </p>
-    <% end %>
-
-
+  <div class="card mb-4" style="max-width: 790px;">
+    <div class="row no-gutters">
+      <% if (@book.image).present? %> 
+        <%= image_tag @book.image, :class => 'book_image_img', height: 150, width: 200 %>
+      <% else %>
+        <%= image_tag 'https://iaaglobal.org/storage/bulk_images/no-image.png', height: 150, width: 200 %>
+      <% end %>
+      <div class="card-body">
+        <h3 class="card-title">Posting Details</h3>
+        <h5 class="card-title">Comments</h5>
+        <p class="card-text">
+          <%= @book.wishlist %>
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <%= render 'books/maps' %>
+  <div class="listing_details">
     <% if (@book.wishlist).eql?('undefined' || '') %> 
     <p>
       <strong>Wishlist:</strong>
@@ -67,58 +90,29 @@
     </p>
     <% else %>
   <% end %>
-
-  <div id='show_map'>
-    <p>View map</p>
   </div>
-
-  <%= render 'books/maps' %>
-
   <!DOCTYPE html>
-    <html>
-      <script>
+  <html>
+    <script>
       $( document ).ready(function() {
-        $('#map').hide();
         let postal_code = '<%= @book.location %>'
         document.getElementById('show_map').onclick = function () {
-          $('#map').show(); 
+          
           let input = document.getElementById('pac-input');
           $('#pac-input').focus()
           $('#pac-input').val(postal_code)
       
+          var keycode = (event.keyCode ? event.keyCode : event.which);
+            if(keycode == '13'){
+              console.log('You pressed a "enter" key in somewhere');	
+            }
           google.maps.event.trigger(input, 'focus', {});
           google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
           google.maps.event.trigger(this, 'focus', {});
         }; 
-        $("#description_paragraph").hide()		
-        $("#descrip_click").on('click', function () {	
-          $("#description_paragraph").slideToggle("slow")
-        });
-      </script>
-    </html>
-</div>
+      })
+    </script>
+  </html>
+  
+</body>
 
-<div class="card text-center" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= @book.user.name %></h5>
-    
-    <a href="#" class="btn btn-primary">Send Message</a>
-  </div>
-</div>
-
-<% if current_user.id != @book.user_id %>
-      <%= link_to "Send message to #{@book.user.name}", conversations_path(sender_id: current_user.id, recipient_id: @book.user.id), method: 'post', class:"button is-link" %>
-   
-    <% end %>
-
-<div class="column is-3 is-offset-1">
-    
-    <div class="listing_details">
-      <p>
-        <strong>Swap Author: </strong>
-        <%= @book.user.name %>
-      </p>
-
-    
-  </div>
- 
