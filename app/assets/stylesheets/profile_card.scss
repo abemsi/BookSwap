@@ -1,0 +1,26 @@
+.profile_card {
+  display: flex;
+  flex-direction: column;
+}
+.profile_card .card-text {
+  align-self: flex-start;
+}
+.profile_card .img {
+  align-self: flex-end;
+}
+
+.profile_container_row {
+  display:flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+// 'edit' & 'delete' buttons
+.profile_card .btn-danger {
+  margin-top: 10px;
+}
+
+// 'message' button
+.profile_card .btn-success {
+  margin-top: 10px;
+}
