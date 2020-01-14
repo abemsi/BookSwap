@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   
   resources :books
   resources :search, only: [:search]
-  resources :genres, only: [:show]
   resources :users
 
+  get 'book_conversation/:book_id' => 'conversations#show_by_book'
   resources :conversations do
     resources :messages
   end
