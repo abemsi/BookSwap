@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = Conversation.where(sender_id: current_user.id)
-    @conversations = Conversation.joins(:book).where(books: { user_id: current_user.id })
+    @conversations += Conversation.joins(:book).where(books: { user_id: current_user.id })
 
   end
 
