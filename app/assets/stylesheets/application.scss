@@ -20,13 +20,21 @@ body {
   padding-top: 75px;
 }
 
+.show-body {
+  justify-content: space-evenly;
+  flex-direction: row;
+  display: flex;
+  margin: 30px;
+  flex-wrap: wrap;
+}
+
+
 .hidden {
   display: none
 }
 
 .card {
-  margin: 5px;
-  margin-bottom: 20px;
+  justify-self: self-start;
 }
 
 .row {
@@ -38,6 +46,12 @@ body {
     filter: drop-shadow(10px 10px 10px #222);
     height: 200px;
     width: 150px;
+}
+
+.book_image_img {
+  -webkit-filter: drop-shadow(10px 10px 10px #222);
+    filter: drop-shadow(10px 10px 10px #222);
+    margin-top: 40px;
 }
 
 #book_cover_img:hover {
@@ -61,13 +75,8 @@ body {
     transform: translate3d(4px, 0, 0);
   }
 }
-.listing_details {
-  padding-left: 50px;
-}
 
-img {
-  padding-right: 20px
-}
+
   .suggestion-img {
     width: 60px;
     height: 60px;
@@ -211,7 +220,6 @@ a {
 .nav-link {
   font: rgba(0, 0, 0, 0.5);
 }
-
 
 .awesomplete {
   display: inline-block;
