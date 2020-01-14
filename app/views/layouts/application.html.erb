@@ -24,6 +24,7 @@
 <%= yield %>
 
 <script>
+$(function() {
   const createSuggestionHTML = (data) => {
     return `
       <li class='suggestion'>
@@ -127,6 +128,7 @@ $('#spinner').hide();
         }
     });
   }, 500))
+  });
 </script>
   <%= render 'layouts/footer' %>
 </body>

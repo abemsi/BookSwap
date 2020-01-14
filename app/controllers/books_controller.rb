@@ -60,7 +60,6 @@ class BooksController < ApplicationController
       :location,
       :publisher,
       :pub_date,
-      :genre_id,
       :cover
     )
   end
