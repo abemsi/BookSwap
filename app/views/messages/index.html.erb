@@ -2,7 +2,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title">Book Title</h4>
+    <h3 class="card-title"><%= @conversation.book.title %></h3>
   </div>
   <div class="card-img-bottom">
   <div id="messages">
@@ -34,23 +34,22 @@
         </article>
       <% end %>
     <% end %>
-    
-    <div class="card-footer">
-      <%= form_for [@conversation, @message] do |f| %>
-        <%= f.text_area :body, class: "form-control", placeholder: "Inquire about a book..." %>
-        <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-        <div>
-          <%= f.submit "Send message", class: "btn btn-primary btn-round" %>
-        </div>
-      <% end %>
-      </div>
     </div>
+</div>
+<div class="card-footer">
+<%= form_for [@conversation, @message] do |f| %>
+  <%= f.text_area :body, class: "form-control", placeholder: "Inquire about a book..." %>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div>
+    <%= f.submit "Send message", class: "btn btn-primary btn-round" %>
+  </div>
+<% end %>
 </div>
 </div>
 
 
   <div class="card card-profile ml-auto mr-auto" style="max-width: 360px">
-    
+    <%= image_tag @conversation.book.cover, :id => "book_cover_img" %>
       <div class="card-body ">
           <h4 class="card-title"></h4>
           <h6 class="card-category text-gray">
