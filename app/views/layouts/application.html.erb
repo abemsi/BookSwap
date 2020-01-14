@@ -82,7 +82,7 @@ $('#lds-ring').hide();
         volumeInfo/imageLinks,
         volumeInfo/publisher,
         volumeInfo/publishedDate,
-        volumeInfo/title)&maxResults=8&key=AIzaSyC05rXB78lSs4nwE6Lb8p-f5CQUEHsHAr8`,
+        volumeInfo/title)&maxResults=8&key=<%= ENV['BOOKS_API_KEY'] %>`,
       success: function(response) {
         $('#spinner').hide();
           console.log(response);
