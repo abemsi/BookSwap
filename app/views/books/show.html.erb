@@ -1,107 +1,101 @@
 <body class='show-body'>
-<div class="card mb-3" style="max-width: 900px;">
-  <div class="row no-gutters">
-      <%= image_tag @book.cover, :id => "book_cover_img" %>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h3 class="card-title"> 
-          <% if (@book.title).eql?('undefined' || '') %> 
-          <% else %>
-            <%= @book.title %>
-          <% end %>
-        </h3>
-        <h6 class="card-subtitle">
-          <% if (@book.author).eql?('undefined' || '') %> 
-          <% else %>
-            <%= @book.author %>
-          <% end %>
-        </h6>
-        <br>
-        <p class="card-text">
-          <% if (@book.description).eql?('undefined' || '') %>
-            <p>  
-          <% else %>
-            <%= @book.description %>
-          <% end %>
-        </p>
-        <p class="card-text"><small class="text-muted">
-          <% if (@book.category).eql?('undefined' || '') %> 
-          <% else %>
-            <%= @book.category %>
-          <% end %>
-        </p></small>
+  <div class="card mb-3" style="max-width: 900px;">
+    <div class="row no-gutters">
+        <%= image_tag @book.cover, :id => "book_cover_img" %>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h3 class="card-title"> 
+            <% if (@book.title).eql?('undefined' || '') %> 
+            <% else %>
+              <%= @book.title %>
+            <% end %>
+          </h3>
+          <h6 class="card-subtitle">
+            <% if (@book.author).eql?('undefined' || '') %> 
+            <% else %>
+              <%= @book.author %>
+            <% end %>
+          </h6>
+          <br>
+          <p class="card-text">
+            <% if (@book.description).eql?('undefined' || '') %>
+              <p>  
+            <% else %>
+              <%= @book.description %>
+            <% end %>
+          </p>
+          <p class="card-text"><small class="text-muted">
+            <% if (@book.category).eql?('undefined' || '') %> 
+            <% else %>
+              <%= @book.category %>
+            <% end %>
+          </p></small>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<% if current_user.present? %>
-  <div class="card card-profile mb-3" style="max-width: 400px; max-height:">
-    <div class="card-body">
-      <h3 class="card-title"><%= @book.user.name %></h3>
-      <%= image_tag "user.png", height: 50, width: 50 %>
-      <% if current_user.id == @book.user_id %>
-        <%= link_to "Messages", conversations_path %>
-        <%= link_to 'Edit', edit_book_path(@book) %>
-        <%= link_to 'Delete', book_path(@book),
-                  method: :delete,
-                  data: { confirm: 'Are you sure you want to delete this swap?' } %>
-        <a href="#" class="btn btn-primary">Send Message</a>
-        <% if !(@book.image).present? %> 
-          <p class="card-text"> Consider adding an image so users can view it </p>
-        <% end %>
-        
-        <% if !(@book.description).present? %> 
-          <p class="card-text"> Consider adding a description for your book </p>
-        <% end %>
-      <% else %>
-        
-        <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class: "btn btn-primary" %>
-        
-      <% end %>
+  <% if current_user.present? %>
+    <div class="card card-profile mb-3" style="max-width: 400px; max-height:300px; min-width: 450px;">
+      <div class="card-body">
+        <div class="profile_card">
+          <h3 class="card-text"><%= image_tag "user.png", height: 50, width: 50 %>
+          <%= @book.user.name %></h3>
+          <small class="text-muted">Member since: <%= @book.created_at.to_date %></small>
+            <% if current_user.id == @book.user_id %>
+              <%= button_to "Messages", conversations_path, class: "btn btn-success" %>
+              <%= button_to 'Edit', edit_book_path(@book), class: "btn btn-danger" %>
+              <%= button_to 'Delete', book_path(@book), class: "btn btn-danger",
+                      method: :delete,
+                      data: { confirm: 'Are you sure you want to delete this swap?' } %>
+              <% if !(@book.image).present? %> 
+                <p class="card-text"> Consider adding an image so users can view it </p>
+              <% end %>
+              <% if !(@book.description).present? %> 
+                <p class="card-text"> Consider adding a description for your book </p>
+              <% end %>
+            <% else %>
+              <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class: "btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% else %>
+    <div class="card card-profile mb-3" style="max-width: 400px; max-height:300px; min-width: 450px;">
+      <div class="card-body">
+        <h3 class="card-title"><%= @book.user.name %></h3>
+        <%= button_to "Login to message #{@book.user.name}", "/login", class:"btn-primary" %>
     </div>
-    
-  </div>
-<% else %>
-  
-    <div class="card-body">
-      <h3 class="card-title"><%= @book.user.name %></h3>
-      <%= button_to "Login to message #{@book.user.name}", "/login", class:"btn-primary" %>
-    
-  </div>
-<% end %>
+  <% end %>
 
-
-<div class="card mb-3" style="max-width: 900px; max-height: 400px;">
-  <div class="row no-gutters">
+  <div class="card mb-3" style="max-width: 900px; min-width: 899px;">
+    <div class="row no-gutters">
       <% if (@book.image).present? %> 
-      <%= image_tag @book.image, :class => 'book_image_img', height: 240, width: 200 %>
-    <% else %>
-      <%= image_tag 'https://iaaglobal.org/storage/bulk_images/no-image.png', height: 240, width: 200 %>
-    <% end %>
-    <div class="col-md-8">
+        <%= image_tag @book.image, :class => 'book_image_img', height: 150, width: 150 %>
+        <% else %>
+          <%= image_tag 'https://iaaglobal.org/storage/bulk_images/no-image.png', height: 240, width: 200 %>
+      <% end %>
       <div class="card-body">
         <h5 class="card-title"> 
-          Swap Details
-        </h5>
-        <h6 class="card-subtitle">
-          Condition - <%= @book.book_condition %>
-        </h6>
-        <br>
-        <p class="card-text">
-          <%= @book.wishlist %>
-        </p>
-        <p class="card-footer"><small class="text-muted">
-          Posted <%= time_ago_in_words(@book.created_at) %> ago
-        </p></small>
+          Swap Details</h5>
+          <h6 class="card-subtitle">
+            Condition - <%= @book.book_condition %></h6><br>
+            <p class="card-text">
+              <%= @book.wishlist %>
+            </p>
+            <p class="card-footer">
+            <small class="text-muted">
+              Posted <%= time_ago_in_words(@book.created_at) %> ago
+            </p>
+          </small>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-  
-<div style="max-width: 900px; max-height: 400px;">
-  <%= render 'books/maps' %>
-</div>
+
+    <div style="max-width: 900px; max-height: 400px;">
+      <%= render 'books/maps' %>
+    </div>
+</body>
 
 <!DOCTYPE html>
     <html>
