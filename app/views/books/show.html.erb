@@ -4,11 +4,10 @@
       <%= image_tag @book.cover, :id => "book_cover_img" %>
     <div class="col-md-8">
       <div class="card-body">
-      <h3 class="card-title">Listing Details</h3>
         <h5 class="card-title"> 
           <% if (@book.title).eql?('undefined' || '') %> 
           <% else %>
-            <%= @book.title %>
+            <h3 class="card-title">Author Details</h3>
           <% end %>
         </h5>
         <h6 class="card-subtitle">
@@ -46,24 +45,36 @@
   <div class="card mb-3" style="max-width: 400px;">
     <div class="card-body">
       <h3 class="card-title">Author Details</h3>
-      <%= image_tag "user.png", height: 50, width: 65 %>
+      <%= image_tag "user.png", height: 50, width: 50 %>
       <% if current_user.id == @book.user_id %>
-        <%= button_to "Edit Post", method: 'post', class:"btn-primary" %>
-        <%= button_to "Delete Post", method: 'post', class:"btn-primary" %>
+        <%= link_to "Messages", conversations_path %>
+        <%= link_to 'Edit', edit_book_path(@book) %>
+        <%= link_to 'Delete', book_path(@book),
+                  method: :delete,
+                  data: { confirm: 'Are you sure you want to delete this swap?' } %>
+        <a href="#" class="btn btn-primary">Send Message</a>
         <% if !(@book.image).present? %> 
           <p class="card-text"> Consider adding an image so users can view it </p>
         <% end %>
+        
         <% if !(@book.description).present? %> 
           <p class="card-text"> Consider adding a description for your book </p>
         <% end %>
       <% else %>
         <h5 class="card-title"><%= @book.user.name %></h5>
-        <a><%= button_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @book.user.id), method: 'post', class:"btn-primary" %> </a>
-        <h5> <%= @book.user.name %>'s Bio:</h5><%= @book.wishlist %> 
+        <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class:"btn-primary" %>
+        <h5 class="card-title"><%= @book.user.name %>'s bio:</h5><%= @book.wishlist %> 
       <% end %>
     </div>
     <div id='show_map'>
       <p>See Location</p>
+    </div>
+  </div>
+<% else %>
+  <div class="card mb-3" style="max-width: 400px;">
+    <div class="card-body">
+      <h3 class="card-title">Author Details</h3>
+      <%= button_to "Login to message #{@book.user.name}", "/login", class:"btn-primary" %>
     </div>
   </div>
 <% end %>
@@ -114,34 +125,10 @@
     </script>
   </html>
 
-<div class="card text-center" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= @book.user.name %></h5>
-    <%= link_to 'Edit', edit_book_path(@book) %>
-    <%= link_to 'Delete', book_path(@book),
-              method: :delete,
-              data: { confirm: 'Are you sure you want to delete this swap?' } %>
-    <a href="#" class="btn btn-primary">Send Message</a>
-  </div>
-</div>
 
-<% if current_user.id != @book.user_id %>
-      <%= link_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class:"button is-link" %>
-    <% elsif current_user.id == @book.user_id  %>
-      <%= link_to "Messages", conversations_path %>
-    <% else %>
 
-    <%= link_to "Login to message #{@book.user.name}", new_user_registration_path %>
-    <% end %>
 
-<div class="column is-3 is-offset-1">
-    
-    <div class="listing_details">
-      <p>
-        <strong>Swap Author: </strong>
-        <%= @book.user.name %>
-      </p>
 
-    
-  </div>
+
+
  
