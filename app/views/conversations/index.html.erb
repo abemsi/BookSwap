@@ -1,33 +1,23 @@
-<div class="msg-container">
-<div>
+<body class='show-body'>
+  <div class="msg-container">
     <h3 class="title is-3">All Messages</h3>
     <% @conversations.each do |conversation| %>
-      
-        <% if conversation.sender_id == current_user.id %>
-          <% recipient = User.find(conversation.book.user_id) %>
-        <% else %>
-          <% recipient = User.find(conversation.sender_id) %>
-        <% end %>
-        <% unless current_user.id == recipient %>
-          
-          <div class="card">
-            <div class="card-body ">
-     
-              <h4 class="card-title">
-                  <%= conversation.book.title %>
-                  <a href="#pablo"><%= link_to recipient.name, [conversation, :messages] %></a>
-                  
-                  <a>
-              </h4>
-              
-            </div>
-          </div>
-         
-        <% end %>
-      <% end %>
-    
+      <% if conversation.sender_id == current_user.id %>
+        <% recipient = User.find(conversation.book.user_id) %>
+      <% else %>
+        <% recipient = User.find(conversation.sender_id) %>
+    <% end %>
+    <% unless current_user.id == recipient %>
+      <div class="card">
+        <div class="card-body ">
+          <h4 class="card-title">
+            <%= conversation.book.title %>
+            <a href="#pablo"><%= link_to recipient.name, [conversation, :messages] %></a>
+          </h4>
+        </div>
+      </div
+    <% end %>
   </div>
-</div>
 </div>
 
     
