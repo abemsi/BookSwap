@@ -34,7 +34,8 @@ body {
 }
 
 .card {
-  justify-self: self-start;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .row {
@@ -46,6 +47,7 @@ body {
     filter: drop-shadow(10px 10px 10px #222);
     height: 200px;
     width: 150px;
+    margin-left: 60px;
 }
 
 .book_image_img {
