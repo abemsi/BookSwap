@@ -157,6 +157,8 @@ a {
     display: inline-block;
     border: none;
     transition: all 0.4s ease 0s;
+    width: 150px;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   }
   
   #showmap:hover {
