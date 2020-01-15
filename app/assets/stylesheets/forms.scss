@@ -1,0 +1,23 @@
+.form-control {
+  margin-bottom: 10px !important;
+}
+
+#book_book_condition {
+  margin-bottom: 10px !important;
+}
+
+#searchbar {
+  width: 30rem;
+  height: 3rem;
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 10px 10px 20px #7a7a7a, 0 0 0 5px #ffffffeb;
+  
+}
+
+#searchbar:focus {
+    background-color: #ffffffcc;
+    box-shadow: 10px 10px 30px #7a7a7a, 0 0 0 5px #ffffffeb;
+}
