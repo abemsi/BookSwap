@@ -1,7 +1,7 @@
 nav {
   white-space: nowrap;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.548);
-  opacity: 0.8;
+  opacity: 0.65;
 }
 
 .navbar-brand {
@@ -11,4 +11,8 @@ nav {
 .user-info {
   padding: 15px 0;
   line-height: 20px;
+}
+
+.my-lg-0 {
+  white-space: nowrap;
 }
