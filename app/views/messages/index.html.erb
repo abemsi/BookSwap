@@ -1,4 +1,5 @@
 <div class="header">
+<img class="card-img-top"><%= image_tag @conversation.book.cover %></img>
   <h3 class="title is-3"><%= @conversation.book.title %></h3>
 </div>
 <div class="convo-container2 overflow">
@@ -8,9 +9,7 @@
         <% if message.body %>
           <% user = User.find(message.user_id) %>
           <tr>
-            
-              <td class="right"><%= message.body %><br><small><%= message.message_time %></small></td>
-            
+            <td class="right"><%= message.body %><br><small><%= message.message_time %></small></td>
           </tr>
         <% end %>
       <% end %>
