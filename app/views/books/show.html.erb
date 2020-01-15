@@ -1,5 +1,5 @@
 <body class='show-body'>
-  <div class="card mb-3" style="max-width: 900px;">
+  <div class="card mb-3" style="max-width: 700px;">
     <div class="row no-gutters">
         <%= image_tag @book.cover, :id => "book_cover_img" %>
       <div class="col-md-8">
@@ -43,21 +43,21 @@
           <%= @book.user.name %></h3>
           <small class="text-muted">Member since: <%= @book.created_at.to_date %></small>
             <% if current_user.id == @book.user_id %>
-              <%= button_to "Messages", conversations_path, class: "btn btn-success" %>
+
               <%= button_to 'Edit', edit_book_path(@book), class: "btn btn-danger" %>
               <%= button_to 'Delete', book_path(@book), class: "btn btn-danger",
                       method: :delete,
                       data: { confirm: 'Are you sure you want to delete this swap?' } %>
-              <% if !(@book.image).present? %> 
-                <p class="card-text"> Consider adding an image so users can view it </p>
-              <% end %>
+                      <div id="show_map">
+                View Map
+              </div>
               <% if !(@book.description).present? %> 
                 <p class="card-text"> Consider adding a description for your book </p>
               <% end %>
             <% else %>
               <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class: "btn btn-success" %>
               <div id="show_map">
-                Show location
+                View Map
               </div>
             <% end %>
           </div>
@@ -71,7 +71,7 @@
     </div>
   <% end %>
 
-  <div class="card mb-3" style="max-width: 900px; min-width: 899px;">
+  <div class="card mb-3" style="max-width: 900px; min-width: 750px;">
     <div class="row no-gutters">
       <% if (@book.image).present? %> 
         <%= image_tag @book.image, :class => 'book_image_img', height: 150, width: 150 %>
@@ -95,13 +95,13 @@
       </div>
     </div>
 
-    <div style="max-width: 900px; max-height: 400px;">
+    <div>
       <%= render 'books/maps' %>
     </div>
 </body>
 
-<!DOCTYPE html>
-    <html>
+
+
       <script>
       $( document ).ready(function() {
         let postal_code = '<%= @book.location %>'
@@ -115,7 +115,7 @@
         }; 
       });
     </script>
-  </html>
+
 
 
 
