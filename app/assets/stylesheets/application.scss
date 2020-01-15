@@ -43,6 +43,7 @@ a {
   display: flex !important;
   justify-content: center !important;
   margin: 20px;
+  border-radius: 20px;
 }
 
 .row {
@@ -50,11 +51,12 @@ a {
 }
 
 #book_cover_img {
-  -webkit-filter: drop-shadow(10px 10px 7px #6b676b);
-    filter: drop-shadow(10px 10px 7px #6b676b);
-    height: 200px;
-    width: 150px;
+  -webkit-filter: drop-shadow(7px 7px 7px #6b676b);
+    filter: drop-shadow(7px 7px 7px #6b676b);
+    height: 12rem;
+    width: 8rem;
     margin-left: 60px;
+    margin-top: 5px;
 }
 
 .book_image_img {
@@ -147,9 +149,9 @@ a {
   }
 
   #show_map {
+    text-align: center;
     color: #fff !important;
     margin-top: 20px;
-    text-transform: uppercase;
     text-decoration: none;
     background: #30a8ed;
     padding: 10px;
@@ -157,9 +159,9 @@ a {
     border-radius: 5px;
     display: inline-block;
     border: none;
-    transition: all 0.2s ease 5s;
-    width: 150px;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    transition: all 2s ease 2s;
+    width: 140px;
+    font-family: inherit;
   }
   
   #showmap:hover {
@@ -169,6 +171,10 @@ a {
     -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
     transition: all 0.4s ease 0s;
+  }
+
+  .uploaded_img {
+    margin: 20px;
   }
 
   .upload_img_btn:hover {
