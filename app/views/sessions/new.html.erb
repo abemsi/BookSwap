@@ -1,29 +1,21 @@
 
 <div class="login">
-<section>
-
-  <header>
-    <h1>Login</h1>
-  </header>
-
-  <div class="books-new row">
-    <div>
-    <%= form_tag '/login' do %>
-
-        <div class="form-group">
-          <%= label_tag :email %>
-          <%= text_field_tag :email, "", class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= label_tag :password %>
-          <%= password_field_tag :password, "", class: 'form-control' %>
-        </div>
-
-        <%= submit_tag 'Login', class: 'btn btn-primary' %>
-      <% end %>
+  <section>
+    <h1 class='card-title'>Login</h1>
+    <div class="books-new row">
+      <div>
+        <%= form_tag '/login' do %>
+          <div class="form-group">
+            <%= label_tag :email %>
+            <%= text_field_tag :email, "", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= label_tag :password %>
+            <%= password_field_tag :password, "", class: 'form-control' %>
+          </div>
+          <%= submit_tag 'Login', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
     </div>
-  </div>
-
-</section>
+  </section>
 </div>

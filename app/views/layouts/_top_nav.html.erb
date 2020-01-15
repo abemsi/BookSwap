@@ -5,14 +5,12 @@
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
-
       <li class="nav-item active">
         <a class="nav-link" href="/books">Books</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="/books/new">Post Swap<span class="sr-only">(current)</span></a>
       </li>
-
       <% if current_user %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,13 +25,12 @@
         </li>
       <% else %>
         <li class="nav-item active">
-          <a class="nav-login"><%= link_to 'Login', '/login' %></a>
+          <a class="nav-link" href="/login">Login</a>
         </li>
         <li class="nav-item active">
-          <%= link_to 'Signup', '/signup' %>
+          <a class="nav-link" href="/signup">Sign up</a>
         </li>
       <% end %> 
-      </ul>
-    </div>
+    </ul>
   </div>
 </nav>
