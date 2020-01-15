@@ -1,12 +1,21 @@
 .form-control {
   margin-bottom: 10px !important;
+  border-radius: 0 !important;
+  height: 3rem !important;
+}
+
+.form-control::placeholder {
+ opacity: 0.2 !important;
 }
 
 #book_book_condition {
   margin-bottom: 10px !important;
+  font-size: 1.2em;
 }
 
 #searchbar {
+  font-size: 20px;
+  padding: 10px;
   width: 30rem;
   height: 3rem;
   color: #495057;
@@ -14,10 +23,15 @@
   border-color: #80bdff;
   outline: 0;
   box-shadow: 10px 10px 20px #7a7a7a, 0 0 0 5px #ffffffeb;
-  
+  border-radius: 5px;
 }
 
 #searchbar:focus {
-    background-color: #ffffffcc;
-    box-shadow: 10px 10px 30px #7a7a7a, 0 0 0 5px #ffffffeb;
+  background-color: #ffffffcc;
+  box-shadow: 10px 10px 30px #7a7a7a, 0 0 0 5px #ffffffeb;
 }
+
+#searchbar::placeholder {
+  opacity: 0.45;
+}
+
