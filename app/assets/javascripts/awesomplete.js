@@ -104,18 +104,6 @@ var _ = function (input, o) {
 			// The click event is fired even if the corresponding mousedown event has called preventDefault
 			"click": function(evt) {
         var li = $(evt.target).closest('li')
-        console.log('here',li)
-        console.log('this',this)
-
-        // let foundli = $(this).find(li)
-        
-
-        // if ($(this).has(li)) {
-
-				// 	while (li && !/li/i.test(li.nodeName)) {
-				// 		li = li.parentNode;
-				// 	}
-
 					if (li && evt.button === 0) {  // Only select on left click
 						evt.preventDefault();
 						me.select(li, evt.target, evt);
