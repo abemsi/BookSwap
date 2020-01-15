@@ -73,7 +73,7 @@
       <% if (@book.image).present? %> 
         <%= image_tag @book.image, :class => 'book_image_img', height: 150, width: 150 %>
         <% else %>
-          <%= image_tag 'https://iaaglobal.org/storage/bulk_images/no-image.png', height: 240, width: 200 %>
+          <%= image_tag 'https://iaaglobal.org/storage/bulk_images/no-image.png', height: 240, width: 200, :class => 'uploaded_img' %>
       <% end %>
       <div class="card-body">
         <h5 class="card-title"> 
