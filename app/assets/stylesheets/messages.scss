@@ -1,20 +1,62 @@
-.msg-container {
+.convo-container {
   margin-left: auto;
   margin-right: auto;
   max-width: 1250px;
   display: flex;
   justify-content: center;
-  padding: 70px;
   text-align: center;
 }
 
-#messages {
+.convo-container2 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1250px;
+  max-height: 500px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.right {
+  float: right;
+  margin: 50px;
+}
+
+.left {
+  float: left;
+  margin: 50px;
+}
+
+.container-msg {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+#msg-footer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1250px;
+}
+
+.msg-input {
+  width: 85%;
+  border-radius: 4px;
+}
+
+.overflow {
+  overflow: auto;
+}
+
+.messages {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  
   overflow: auto;
-  height: 500px;
+  height: 400px;
 }
 
 .msg-bar {
@@ -37,4 +79,25 @@
 
 .card-profile {
   height: 300px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.header {
+  padding-top: 80px;
+  
+  text-align: center;
 }
