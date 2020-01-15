@@ -1,7 +1,9 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+body {
+  padding-top: 60px;
+}
 .jumbotron {
   background-image: url('https://github.com/abemsi/BookSwap/blob/layout/public/images/book.jpg?raw=true');
   background-size: cover;
@@ -39,7 +41,6 @@
 
 .card-title {
   justify-self: flex-start;
-  padding-top: 30px;
 }
 
 .books-index {
