@@ -56,6 +56,9 @@
               <% end %>
             <% else %>
               <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class: "btn btn-success" %>
+              <div id="show_map">
+                Show location
+              </div>
             <% end %>
           </div>
         </div>
