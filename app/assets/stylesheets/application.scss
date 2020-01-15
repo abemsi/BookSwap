@@ -148,6 +148,7 @@ a {
 
   #show_map {
     color: #fff !important;
+    margin-top: 20px;
     text-transform: uppercase;
     text-decoration: none;
     background: #30a8ed;
@@ -156,7 +157,7 @@ a {
     border-radius: 5px;
     display: inline-block;
     border: none;
-    transition: all 0.4s ease 0s;
+    transition: all 0.2s ease 5s;
     width: 150px;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   }
