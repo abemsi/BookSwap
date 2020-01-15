@@ -1,6 +1,7 @@
 .convo-container {
   margin-left: auto;
   margin-right: auto;
+  min-width: 1250px;
   max-width: 1250px;
   display: flex;
   justify-content: center;
@@ -11,6 +12,7 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 1250px;
+  min-height: 500px;
   max-height: 500px;
   display: flex;
   justify-content: center;
