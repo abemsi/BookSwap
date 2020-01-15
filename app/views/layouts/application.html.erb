@@ -85,7 +85,6 @@ $('#lds-ring').hide();
         volumeInfo/title)&maxResults=8&key=<%= ENV['BOOKS_API_KEY'] %>`,
       success: function(response) {
         $('#spinner').hide();
-          console.log(response);
           const list = makeList(response.items)
           new Awesomplete(document.querySelector("#mylist"),{
             

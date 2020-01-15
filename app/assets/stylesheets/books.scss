@@ -1,17 +1,9 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
-  padding-top: 60px;
-}
 
 .books {
   padding: 50px;
-}
-
-#map {
-  height: 300px;
-  width: 400px;
 }
 
 .books.row {
@@ -19,17 +11,6 @@ body {
 }
 #description_paragraph {
   width: 800px;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 750px;
-  width: 200px;
-  border-right: 1px solid #D7DBDD;
-  background-color: #FCFDFD;
-  padding: 10px;
 }
 
 .card-title {

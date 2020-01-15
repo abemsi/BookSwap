@@ -104,18 +104,6 @@ var _ = function (input, o) {
 			// The click event is fired even if the corresponding mousedown event has called preventDefault
 			"click": function(evt) {
         var li = $(evt.target).closest('li')
-        console.log('here',li)
-        console.log('this',this)
-
-        // let foundli = $(this).find(li)
-        
-
-        // if ($(this).has(li)) {
-
-				// 	while (li && !/li/i.test(li.nodeName)) {
-				// 		li = li.parentNode;
-				// 	}
-
 					if (li && evt.button === 0) {  // Only select on left click
 						evt.preventDefault();
 						me.select(li, evt.target, evt);
@@ -274,17 +262,10 @@ _.prototype = {
 	},
 
 	select: function (selected, origin, originalEvent) {
-    console.log(jQuery)
-    console.log('selected =====>', selected.innerText)
 		if (selected) {
-      console.log('if')
-      // this.index = $.siblingIndex(selected);
-      console.log('children', jQuery(this.ul).children())
       var id = Array.from(this.ul.children).findIndex(el => el.innerText == selected.innerText)
       this.index = id
-      console.log('got here', this.index)
 		} else {
-      console.log('else')
 			selected = this.ul.children[this.index];
 		}
 

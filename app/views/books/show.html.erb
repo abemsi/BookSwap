@@ -18,12 +18,21 @@
           </h6>
           <br>
           <p class="card-text">
-            <% if (@book.description).eql?('undefined' || '') %>
-              <p>  
-            <% else %>
-              <%= @book.description %>
+            <% if (@book.description).eql?('undefined' || '') %>   
+              <% else %>
+                <% if @book.description.length > 200 %>
+                <%= truncate(@book.description, length: 200) %>
+                <%= link_to '...Read more', '', class: "read-more-#{@book.id}" %>
+                <script>
+                  $('.read-more-<%= @book.id %>').on('click', function(e) {
+                    e.preventDefault()
+                    $(this).parent().html('<%= escape_javascript @book.description %>')
+                  })
+                </script>
+              <% else %>
+                <%= @book.description %>
+              <% end %>
             <% end %>
-          </p>
           <p class="card-text"><small class="text-muted">
             <% if (@book.category).eql?('undefined' || '') %> 
             <% else %>
@@ -68,6 +77,7 @@
       <div class="card-body">
         <h3 class="card-title"><%= @book.user.name %></h3>
         <%= button_to "Login to message #{@book.user.name}", "/login", class:"btn-primary" %>
+      </div>
     </div>
   <% end %>
 
