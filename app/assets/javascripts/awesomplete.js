@@ -274,17 +274,10 @@ _.prototype = {
 	},
 
 	select: function (selected, origin, originalEvent) {
-    console.log(jQuery)
-    console.log('selected =====>', selected.innerText)
 		if (selected) {
-      console.log('if')
-      // this.index = $.siblingIndex(selected);
-      console.log('children', jQuery(this.ul).children())
       var id = Array.from(this.ul.children).findIndex(el => el.innerText == selected.innerText)
       this.index = id
-      console.log('got here', this.index)
 		} else {
-      console.log('else')
 			selected = this.ul.children[this.index];
 		}
 
