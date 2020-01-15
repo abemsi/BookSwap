@@ -1,11 +1,14 @@
 nav {
   white-space: nowrap;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.548);
-  opacity: 0.65;
+  color: white;
+  background-color: #304363;
 }
+
 
 .navbar-brand {
   font-size: xx-large;
+  font-weight: bolder;
 }
 
 .user-info {
