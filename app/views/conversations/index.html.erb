@@ -1,33 +1,24 @@
-
-  <div class="msg-container">
-    <h3 class="title is-3">All Messages</h3>
-
-    <table class="table table-bordered">
+<div class="header">
+  <h3 class="title is-3">All Messages</h3>
+</div>
+<div class="convo-container">
+  <table>
+    <tbody>
       <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id %>
           <% recipient = User.find(conversation.book.user_id) %>
         <% else %>
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-        <tbody>
-        <td>
-          <th colspan="2"><%= image_tag conversation.book.cover, :id => "book_cover_img" %></th>
-        </td>
-        <td>
-          <th colspan="2"><%= conversation.book.title %></th>
-        </td>
-        <td>
-          <th colspan="2">
-            <%= link_to recipient.name, [conversation, :messages] %>
-          </th>
-        </td>
-        </tbody>
+      <tr>
+        <td><%= image_tag conversation.book.cover, :id => "book_cover_img" %></th></td>
+        <td><%= conversation.book.title %></td>
+        <td><%= link_to recipient.name, [conversation, :messages] %></td>
+      </tr>
       <% end %>
-    </table>
-
-
-    
-  </div>
+    </tbody>
+  </table>
+</div>
 
 
     
