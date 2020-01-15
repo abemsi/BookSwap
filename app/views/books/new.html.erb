@@ -1,13 +1,14 @@
-
 <section class="books-new">
   <div class="swap-form row">
     <h1 class="display-5">Create Swap</h1>
     <%= form_for :book, url: books_new_path do |form| %><br>
       <%= image_tag src='', id: 'image2' %><br><br>
+      
       <div class="form-group">
         <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete', placeholder: "Title", :required => true, autofocus: true %>
         <%= form.text_field :author, id: 'author', class: 'form-control', placeholder: "Author", :required => true %>
-        
+       
+
         <%= form.label "Add a photo:" %><br>
         <%= form.file_field :image %><br><br>
           
@@ -45,7 +46,6 @@
         class: 'form-control', 
         id: 'search', 
         placeholder: 'Ex. T3K 5Z5',
-        pattern: '^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$',
         :required => true %>
       </div>
 
