@@ -39,7 +39,7 @@ a {
 
 .show-body {
   padding-top: 50px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: row;
   display: flex;
   margin: 30px;
@@ -52,7 +52,7 @@ a {
 
 .card {
   display: flex !important;
-  justify-content: center !important;
+  align-items: center !important;
   margin: 20px;
   border-radius: 20px;
 }
