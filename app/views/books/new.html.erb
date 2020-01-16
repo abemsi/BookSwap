@@ -7,10 +7,6 @@
       <div class="form-group">
         <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete', placeholder: "Title", :required => true, autofocus: true %>
         <%= form.text_field :author, id: 'author', class: 'form-control', placeholder: "Author", :required => true %>
-       
-
-        <%= form.label "Add a photo:" %><br>
-        <%= form.file_field :image %><br><br>
           
         <%= form.label "What condition is your book in?" %><br>
         <%= form.select :book_condition,[ "","Like new","Good","Well read","Seen Better Days"], :required => true %>
@@ -19,15 +15,6 @@
       
       </div> 
       <div class="form-group hidden">
-
-        <%= form.label :publisher %>
-        <%= form.text_field :publisher, id: 'publisher', class: 'form-control' %>
-        
-        <%= form.label :rating %>
-        <%= form.text_field :rating, id: 'rating', class: 'form-control' %>
-        
-        <%= form.label :pub_date %>
-        <%= form.text_field :pub_date, id: 'pub_date', class: 'form-control' %>
         
         <%= form.label :cover %>
         <%= form.text_field :cover, id: 'cover', class: 'form-control' %>
