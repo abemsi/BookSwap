@@ -11,13 +11,14 @@
 .convo-container2 {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1250px;
+  max-width: 700px;
   min-height: 500px;
   max-height: 500px;
   display: flex;
   justify-content: center;
   text-align: center;
   border-radius: 4px;
+  border: solid 1px black;
 }
 
 .right {
@@ -41,11 +42,20 @@
 #msg-footer {
   margin-left: auto;
   margin-right: auto;
-  width: 1250px;
+  width: 700px;
+  height: 90px;
+  border-bottom: solid 1px black;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+}
+
+.btn9 {
+  margin-bottom: 45px;
+  margin-left: 35px;
 }
 
 .msg-input {
-  width: 85%;
+  width: 70%;
   border-radius: 4px;
 }
 
@@ -98,8 +108,7 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.header {
-  padding-top: 80px;
-  
+.header2 {
+  padding-top: 50px;
   text-align: center;
 }
