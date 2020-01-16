@@ -55,6 +55,7 @@ a {
   justify-content: center !important;
   margin: 20px;
   border-radius: 20px;
+  -webkit-filter: drop-shadow(7px 7px 7px whitesmoke);
 }
 
 .row {
@@ -249,5 +250,9 @@ a {
     display: inline-block;
     border: none;
     transition: all 0.4s ease 0s;
+}
+
+.card-body {
+  overflow: auto;
 }
 
