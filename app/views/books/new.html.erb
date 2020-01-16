@@ -7,7 +7,10 @@
       <div class="form-group">
         <%= form.text_field :title, id: 'mylist', class: 'form-control awesomplete', placeholder: "Title", :required => true, autofocus: true %>
         <%= form.text_field :author, id: 'author', class: 'form-control', placeholder: "Author", :required => true %>
-          
+         
+        <%= form.label "Add a photo:" %><br>
+        <%= form.file_field :image %><br><br>
+
         <%= form.label "What condition is your book in?" %><br>
         <%= form.select :book_condition,[ "","Like new","Good","Well read","Seen Better Days"], :required => true %>
           
