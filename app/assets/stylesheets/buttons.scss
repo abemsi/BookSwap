@@ -54,32 +54,33 @@ h2 {
 	display: inline-block;
   font-size: 20px;
   font-family: inherit;
-	padding: 20px 60px;
+	padding: 10px 40px;
 	color: white;
   border-radius: 6px;
-  font-family: "Roboto" !important;
+  font-family: 'roboto', sans-serif !important;
 	text-align: center;
 	transition: top .01s linear;
   text-shadow: 0 1px 0 rgba(0,0,0,0.15);
   text-decoration: none !important;
+  height: 50px;
 }
 
-.btn-3d.blue:hover   {background-color: #699DD1;}
+.btn-3d.blue:hover {background-color: #33435f;}
 
 .btn-3d:active {
 	top: 9px;
 }
 
 .btn-3d.blue {
-	background-color: #6DA2D9;
-	box-shadow: 0 0 0 1px #6698cb inset,
+	background-color: #304363;;
+	box-shadow: 0 0 0 1px #304363 inset,
 				0 0 0 2px rgba(255,255,255,0.15) inset,
-				0 8px 0 0 rgba(110, 164, 219, .7),
+				0 8px 0 0 #304363,
 				0 8px 0 1px rgba(0,0,0,.4),
 				0 8px 8px 1px rgba(0,0,0,0.5);
 }
 .btn-3d.blue:active {
-	box-shadow: 0 0 0 1px #6191C2 inset,
+	box-shadow: 0 0 0 1px #304363,
 				0 0 0 2px rgba(255,255,255,0.15) inset,
 				0 0 0 1px rgba(0,0,0,0.4);
 }
