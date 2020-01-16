@@ -1,136 +1,127 @@
 <body class='show-body'>
-  <div class="card mb-3" style="max-width: 700px;">
-    <div class="row no-gutters">
-        <%= image_tag @book.cover, :id => "book_cover_img" %>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h3 class="card-title"> 
-            <% if (@book.title).eql?('undefined' || '') %> 
-            <% else %>
-              <%= @book.title %>
-            <% end %>
-          </h3>
-          <h6 class="card-subtitle">
-            <% if (@book.author).eql?('undefined' || '') %> 
-            <% else %>
-              <%= @book.author %>
-            <% end %>
-          </h6>
-          <br>
-          <p class="card-text">
-            <% if (@book.description).eql?('undefined' || '') %>   
-              <% else %>
-                <% if @book.description.length > 200 %>
-                <%= truncate(@book.description, length: 200) %>
-                <%= link_to '...Read more', '', class: "read-more-#{@book.id}" %>
-                <script>
-                  $('.read-more-<%= @book.id %>').on('click', function(e) {
-                    e.preventDefault()
-                    $(this).parent().html('<%= escape_javascript @book.description %>')
-                  })
-                </script>
-              <% else %>
-                <%= @book.description %>
-              <% end %>
-            <% end %>
-          <p class="card-text"><small class="text-muted">
-            <% if (@book.category).eql?('undefined' || '') %> 
-            <% else %>
-              <%= @book.category %>
-            <% end %>
-          </p></small>
-        </div>
+
+  <div class="card text-center align-items-center" style="min-width: 50rem; max-width: 50rem; min-height: 40rem; max-height: 40rem;">
+    <%= image_tag @book.cover, :id => "book_cover_img" %>
+      <div class="card-body swap-details">
+        <h5 class="card-title">
+        <% if (@book.title).eql?('undefined' || '') %> 
+        <% else %>
+          <%= @book.title %>
+        <% end %>
+        </h5>
+        <h6 class="card-subtitle">
+          <% if (@book.author).eql?('undefined' || '') %> 
+          <% else %>
+            <%= @book.author %>
+          <% end %>
+        </h6>
+        <br>
+        <p class="card-text">
+          <% if (@book.category).eql?('undefined' || '') %> 
+          <% else %>
+            <%= @book.category %>
+          <% end %>
+        </p>
+        <p class="card-text">
+        <% if (@book.description).eql?('undefined' || '') %>   
+        <% else %>
+          <% if @book.description.length > 200 %>
+          <%= truncate(@book.description, length: 200) %>
+          <%= link_to '...Read more', '', class: "read-more-#{@book.id}" %>
+          <script>
+            $('.read-more-<%= @book.id %>').on('click', function(e) {
+              e.preventDefault()
+              $(this).parent().html('<%= escape_javascript @book.description %>')
+            })
+          </script>
+        <% else %>
+          <%= @book.description %>
+        <% end %>
+        <% end %>
+        </p>
+        <p>
+          Condition - <%= @book.book_condition %>
+        </p>
+        <p>
+          <strong>Swap details:</strong>
+          <%= @book.wishlist %>
+        </p>
+      </div>
+      <div class="card-footer" style="width: 100%">
+        <small class="text-muted">Posted <%= time_ago_in_words(@book.created_at) %> ago</small>
       </div>
     </div>
   </div>
 
   <% if current_user.present? %>
-    <div class="card card-profile mb-3" style="max-width: 400px; max-height:300px; min-width: 450px;">
+    <div class="card card-profile mb-3 text-center align-items-center" style="max-width: 30rem; min-width: 30rem; min-height: 40rem; max-height: 40rem;">
       <div class="card-body">
-        <div class="profile_card">
-          <h3 class="card-text"><%= image_tag "user.png", height: 50, width: 50 %>
-          <%= @book.user.name %></h3>
-          <small class="text-muted">Member since: <%= @book.created_at.to_date %></small>
-            <% if current_user.id == @book.user_id %>
-
-              <%= button_to 'Edit', edit_book_path(@book), method: 'get', class: "btn btn-danger" %>
-              <%= button_to 'Delete', book_path(@book), class: "btn btn-danger",
-                      method: :delete,
-                      data: { confirm: 'Are you sure you want to delete this swap?' } %>
-                      <div id="show_map">
-                View Map
-              </div>
-              <% if !(@book.description).present? %> 
-                <p class="card-text"> Consider adding a description for your book </p>
-              <% end %>
-            <% else %>
-              <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class: "btn btn-success" %>
-              <div id="show_map">
-                View Map
-              </div>
-            <% end %>
-          </div>
+        <div class="profile_card text-center align-items-center">
+          <h3 class="card-title"><%= image_tag "user.png", height: 50, width: 50 %><%= @book.user.name %></h3>
+          <% if current_user.id == @book.user_id %>
+            <div class="row justify-content-space-around">
+            <%= button_to 'Edit', edit_book_path(@book), method: 'get', class: "btn btn-danger" %>
+            &nbsp
+            <%= button_to 'Delete', book_path(@book), class: "btn btn-danger",
+              method: :delete, data: { confirm: 'Are you sure you want to delete this swap?' } %>
+            </div>
+            <div id="show_map">
+              View Location
+            </div>
+            <div id="map2">
+              <%= render 'books/maps' %>
+            </div>
         </div>
       </div>
+      <div class="card-footer" style="width: 100%">
+        <small class="text-muted">Member since: <%= @book.created_at.to_date %></small>
+      </div> 
+          <% else %>
+            <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class: "btn btn-success" %>
+            </div>
+            <div id="show_map">
+              View Location
+            </div>
+            <div id="map2">
+              <%= render 'books/maps' %>
+            </div>
+        </div>
+        <div class="card-footer" style="width: 100%">
+          <small class="text-muted">Member since: <%= @book.created_at.to_date %></small>
+        </div>
+      </div>
+          <% end %>
   <% else %>
-    <div class="card card-profile mb-3" style="max-width: 400px; max-height:300px; min-width: 450px;">
-      <div class="card-body">
-        <h3 class="card-title"><%= @book.user.name %></h3>
-        <%= button_to "Login to message #{@book.user.name}", "/login", class:"btn-primary" %>
+  <div class="card card-profile mb-3 text-center align-items-center" style="max-width: 30rem; min-width: 30rem; min-height: 40rem; max-height: 40rem;">
+    <div class="card-body">
+      <div class="profile_card text-center align-items-center">
+        <h3 class="card-title"><%= image_tag "user.png", height: 50, width: 50 %><%= @book.user.name %></h3>
+        <%= button_to "Login to message #{@book.user.name}", "/login", class:"btn btn-success" %>
+      </div>
+      <div id="show_map">
+        View Location
+      </div>
+      <div id="map2">
+        <%= render 'books/maps' %>
       </div>
     </div>
+    <div class="card-footer" style="width: 100%">
+      <small class="text-muted">Member since: <%= @book.created_at.to_date %></small>
+    </div>
+  </div>
   <% end %>
 
-  <div class="card mb-3" style="max-width: 900px; min-width: 750px;">
-    <div class="row no-gutters">
-      <% if (@book.image).present? %> 
-        <%= image_tag @book.image, :class => 'book_image_img', height: 150, width: 150 %>
-        <% else %>
-          <%= image_tag 'https://iaaglobal.org/storage/bulk_images/no-image.png', height: 240, width: 200, :class => 'uploaded_img' %>
-      <% end %>
-      <div class="card-body">
-        <h5 class="card-title"> 
-          Swap Details</h5>
-          <h6 class="card-subtitle">
-            Condition - <%= @book.book_condition %></h6><br>
-            <p class="card-text">
-              <%= @book.wishlist %>
-            </p>
-            <p class="card-footer">
-            <small class="text-muted">
-              Posted <%= time_ago_in_words(@book.created_at) %> ago
-            </p>
-          </small>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <%= render 'books/maps' %>
-    </div>
+  <script>
+    $( document ).ready(function() {
+      let postal_code = '<%= @book.location %>'
+      document.getElementById('show_map').onclick = function () {
+        let input = document.getElementById('pac-input');
+        $('#pac-input').focus()
+        $('#pac-input').val(postal_code)
+        google.maps.event.trigger(input, 'focus', {});
+        google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
+        google.maps.event.trigger(this, 'focus', {});
+      }; 
+    });
+  </script>
 </body>
-
-
-
-      <script>
-      $( document ).ready(function() {
-        let postal_code = '<%= @book.location %>'
-        document.getElementById('show_map').onclick = function () {
-          let input = document.getElementById('pac-input');
-          $('#pac-input').focus()
-          $('#pac-input').val(postal_code)
-          google.maps.event.trigger(input, 'focus', {});
-          google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
-          google.maps.event.trigger(this, 'focus', {});
-        }; 
-      });
-    </script>
-
-
-
-
-
-
-
-
- 
