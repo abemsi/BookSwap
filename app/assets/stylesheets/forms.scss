@@ -21,12 +21,14 @@
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
-  border-radius: 5px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
 }
 
 .fa-search {
-  width: 10%;
-  margin-left: 5px;
+  width: 20px;
+  margin-left: 10px;
 }
 
 #searchbar::placeholder {
