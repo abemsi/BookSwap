@@ -1,5 +1,4 @@
-<div class="header">
-<img class="card-img-top"><%= image_tag @conversation.book.cover %></img>
+<div class="header2">
   <h3 class="title is-3"><%= @conversation.book.title %></h3>
 </div>
 <div class="convo-container2 overflow">
@@ -9,7 +8,9 @@
         <% if message.body %>
           <% user = User.find(message.user_id) %>
           <tr>
-            <td class="right"><%= message.body %><br><small><%= message.message_time %></small></td>
+            <td class="left"><%= message.body %>
+            <br>
+            <small><%= message.message_time %></small></td>
           </tr>
         <% end %>
       <% end %>
@@ -20,7 +21,7 @@
 <div id="msg-footer" class="card-footer">
   <%= form_for [@conversation, @message] do |f| %>
     <%= f.text_area :body, class: "form-control, msg-input" %>
+    <%= f.submit "Send message", class: "btn btn-primary btn-round btn9" %>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-    <%= f.submit "Send message", class: "btn btn-primary btn-round" %>
   <% end %>
 <div>
