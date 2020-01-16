@@ -88,6 +88,30 @@
         </div>
         <div class="card-footer" style="width: 100%">
           <small class="text-muted">Member since: <%= @book.created_at.to_date %></small>
+<<<<<<< HEAD
+=======
+            <% if current_user.id == @book.user_id %>
+
+              <%= button_to 'Edit', edit_book_path(@book), method: 'get', class: "btn btn-danger" %>
+              <%= button_to 'Delete', book_path(@book), class: "btn btn-danger",
+                      method: :delete,
+                      data: { confirm: 'Are you sure you want to delete this swap?' } %>
+                      <small class="text-muted"><%= @book.location %></small>
+                      <div id="show_map">
+                View Location
+              </div>
+              <% if !(@book.description).present? %> 
+                <p class="card-text"> Consider adding a description for your book </p>
+              <% end %>
+            <% else %>
+              <%= button_to "Message #{@book.user.name}", "/book_conversation/#{@book.id}", method: 'get', class: "btn btn-success" %>
+              <div id="show_map">
+                View Map
+              </div>
+              <small class="location_tag"><%= @book.location %></small>
+            <% end %>
+          </div>
+>>>>>>> e8d5000736af2147b55c65bbba55f647179517de
         </div>
       </div>
           <% end %>

@@ -5,7 +5,10 @@
       <a class="navbar-brand" href="/"> BookSwap </a>
     </div>
   </div>
-  
+  <%= form_tag(search_path, method: :get) do %>
+    <%= search_field_tag :term, params[:term], placeholder: "Search by book title, author or category", id: "searchbar" %>
+  <% end %>
+  <i class="fas fa-search fa-lg"></i>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
@@ -37,3 +40,4 @@
     </ul>
   </div>
 </nav>
+<script src="https://use.fontawesome.com/releases/v5.12.0/js/all.js" data-auto-replace-svg="nest"></script>

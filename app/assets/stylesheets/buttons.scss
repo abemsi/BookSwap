@@ -1,3 +1,86 @@
 .btn {
   background-color: #304363;
 }
+
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	background: #eaedf1;
+	font-family: 'Lato', sans-serif;
+}
+.header {
+	background: white;
+	padding: 30px;
+	text-align: center;
+}
+.header h1 {
+	font-weight: 300;
+	display: inline;
+}
+h2 {
+	color: #89867e;
+	text-align: center;
+	font-weight: 300;
+}
+.color {
+	width: 350px;
+	margin: 0 auto;
+}
+.color li {
+	margin: 0 15px 0 0;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	border-radius: 100%;
+}
+
+/* 3D Main Page Button */
+
+.btn {
+	position: relative;
+	border: 0;
+	padding: 15px 25px;
+	display: inline-block;
+	text-align: center;
+	color: white;
+}
+
+
+.btn-3d {
+  border: none !important;
+	position: relative;
+	display: inline-block;
+  font-size: 20px;
+  font-family: inherit;
+	padding: 20px 60px;
+	color: white;
+  border-radius: 6px;
+  font-family: "Roboto" !important;
+	text-align: center;
+	transition: top .01s linear;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+  text-decoration: none !important;
+}
+
+.btn-3d.blue:hover   {background-color: #699DD1;}
+
+.btn-3d:active {
+	top: 9px;
+}
+
+.btn-3d.blue {
+	background-color: #6DA2D9;
+	box-shadow: 0 0 0 1px #6698cb inset,
+				0 0 0 2px rgba(255,255,255,0.15) inset,
+				0 8px 0 0 rgba(110, 164, 219, .7),
+				0 8px 0 1px rgba(0,0,0,.4),
+				0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.blue:active {
+	box-shadow: 0 0 0 1px #6191C2 inset,
+				0 0 0 2px rgba(255,255,255,0.15) inset,
+				0 0 0 1px rgba(0,0,0,0.4);
+}
+

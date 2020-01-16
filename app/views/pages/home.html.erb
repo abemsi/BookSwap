@@ -10,9 +10,7 @@
         </div>
       </div>
     </div>
-    <%= form_tag(search_path, method: :get) do %>
-      <%= search_field_tag :term, params[:term], placeholder: "Search by book title, author or category", id: "searchbar" %>
-    <% end %>
+    <%= button_to 'Browse all books', '/books', method: 'get', class: 'btn-3d blue' %>
   </header>
 </body>      
           
