@@ -2,7 +2,7 @@
 
 ## Background
 
-This project was completed as of Weeks 10-12 in the Web Development bootcamp at Lighthouse Labs. BookSwap is online platform for trading used books, utilizing Google Books API to keep the content consistent, clean and user-friendly.
+This project was completed as of Weeks 10-12 in the Web Development bootcamp at Lighthouse Labs. BookSwap is online platform for trading used books, utilizing Google Books API and Google Maps API to keep the content consistent, clean and user-friendly.
 
 ## Functional Requirements
 
