@@ -4,6 +4,10 @@
   height: 3rem !important;
 }
 
+#mylist { 
+  min-width: 400px;
+}
+
 .form-control::placeholder {
  opacity: 0.2 !important;
 }
