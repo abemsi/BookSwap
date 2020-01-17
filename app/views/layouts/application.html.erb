@@ -70,7 +70,7 @@
           volumeInfo/imageLinks,
           volumeInfo/publisher,
           volumeInfo/publishedDate,
-          volumeInfo/title)&maxResults=8&key=<%= ENV['BOOKS_API_KEY'] %>`,
+          volumeInfo/title)&maxResults=4&key=<%= ENV['BOOKS_API_KEY'] %>`,
         success: function(response) {
             const list = makeList(response.items)
             new Awesomplete(document.querySelector("#mylist"),{
@@ -109,7 +109,7 @@
             });
           }
       });
-    }, 300))
+    }, 400))
   });
 </script>
 </body>
