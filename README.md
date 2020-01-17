@@ -11,7 +11,6 @@ There are multiple goals to this project:
 - Become familiar working with REST API's in the Ruby on Rails framework
 - Use existing code style and approach to implement new features in unfamiliar territory
 - Apply previous learning tactics to research and become familiar with a new paradigm, language and framework
-- A simulation of the real world where feature and bug-fix requests are listed instead of step-by-step instructions on how to implement a solution
 
 ## Home 
 ![homepage](https://user-images.githubusercontent.com/48977789/72626505-13077980-3908-11ea-8ecc-eba015d6fd59.png)
