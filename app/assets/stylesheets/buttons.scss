@@ -2,14 +2,28 @@
   background-color: #304363;
 }
 
-* {
-	box-sizing: border-box;
+.upload_img_btn {
+  color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #30a8ed;
+    padding: 10px;
+    height: 35px;
+    width: 120px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
 }
-body {
-	margin: 0;
-	background: #eaedf1;
-	font-family: 'Lato', sans-serif;
+.upload_img_btn:hover {
+  background: #58c0fd;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
 }
+
 .header {
 	background: white;
 	padding: 30px;
