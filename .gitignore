@@ -42,5 +42,6 @@ ehthumbs.db
 Thumbs.db
 
 #ignore secrets.yml file
-config/secrets.yml
 .env
+config/secrets.yml
+secrets.yml
