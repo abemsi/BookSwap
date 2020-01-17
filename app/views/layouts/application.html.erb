@@ -10,124 +10,107 @@
 </head>
 <body>
 
-<style>
-
-#mylist { 
-  visibility: visible !important;
-  min-width: 400px;
-}
-
-</style>
 <%= csrf_meta_tags %>
-
-
 <%= render 'layouts/top_nav' %>
 <%= yield %>
 
 <script>
-$(function() {
-  const createSuggestionHTML = (data) => {
-    return `
-      <li class='suggestion'>
-        <img class='suggestion-img' src='${data.volumeInfo.imageLinks.smallThumbnail}' />
-        <h6 class='suggestion-title'>${data.volumeInfo.title}</h6><br><br>
-        <em><span class='suggestion-author'>${data.volumeInfo.authors}</span></em>
-        <span class='hide_info'>
-        <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
-        <span class='suggestion-description'>${data.volumeInfo.description}</span>
-        <span class='suggestion-category'>${data.volumeInfo.categories}</span>
-        <span class='suggestion-cover'>${data.volumeInfo.imageLinks.smallThumbnail}</span>
-        <span class='suggestion-publisher'>${data.volumeInfo.publisher}</span>
-        <span class='suggestion-pub_date'>${data.volumeInfo.publishedDate}</span>
-        <span class='suggestion-rate'>${data.volumeInfo.averageRating}</span>
-        </span>
-      </li>
-    `
-  }
+  $(function() {
+    const createSuggestionHTML = (data) => {
+      return `
+        <li class='suggestion'>
+          <img class='suggestion-img' src='${data.volumeInfo.imageLinks.smallThumbnail}' />
+          <h6 class='suggestion-title'>${data.volumeInfo.title}</h6><br><br>
+          <em><span class='suggestion-author'>${data.volumeInfo.authors}</span></em>
+          <span class='hide_info'>
+          <span class='suggestion-rating'>rating: ${data.volumeInfo.averageRating}/5</span>
+          <span class='suggestion-description'>${data.volumeInfo.description}</span>
+          <span class='suggestion-category'>${data.volumeInfo.categories}</span>
+          <span class='suggestion-cover'>${data.volumeInfo.imageLinks.smallThumbnail}</span>
+          <span class='suggestion-publisher'>${data.volumeInfo.publisher}</span>
+          <span class='suggestion-pub_date'>${data.volumeInfo.publishedDate}</span>
+          <span class='suggestion-rate'>${data.volumeInfo.averageRating}</span>
+          </span>
+        </li>
+      `
+    }
 
-  const makeList = (data) => {
-    const $list = $("<ul id='mylist'></ul>");
-    return data.map(suggestion => {
-      return createSuggestionHTML(suggestion)
-    })
-  }
+    const makeList = (data) => {
+      const $list = $("<ul id='mylist'></ul>");
+      return data.map(suggestion => {
+        return createSuggestionHTML(suggestion)
+      })
+    }
 
-  // THIS FUNCTION WILL GO TO NEW FOLDER
+    // THIS FUNCTION WILL GO TO NEW FOLDER
 
-  function debounce(func, wait, immediate) {
-    let timeout;
-    return function() {
-        let context = this, args = arguments;
-        let later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        let callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
-};
-$('#lds-ring').hide();
-  $("#mylist").focus();
-  $("#mylist").on('keyup', debounce(function() {
-    const book = $("#mylist").val();
-    $('#lds-ring').show();
-    $.get({
-      url: `https://www.googleapis.com/books/v1/volumes?q=`+ book + `&fields=items(
-        volumeInfo/authors,
-        volumeInfo/description,
-        volumeInfo/categories,
-        volumeInfo/averageRating,
-        volumeInfo/imageLinks,
-        volumeInfo/publisher,
-        volumeInfo/publishedDate,
-        volumeInfo/title)&maxResults=8&key=<%= ENV['BOOKS_API_KEY'] %>`,
-      success: function(response) {
-        $('#spinner').hide();
-          const list = makeList(response.items)
-          new Awesomplete(document.querySelector("#mylist"),{
-            
-              // text below is the created suggestion html from createSuggestionHTML
-
-              list: list,
-              replace: function(text) {
-              const $suggestion = $(text.label);
-  
-              const title = $suggestion.find('.suggestion-title').text();
-              this.input.value = title;
-  
+    function debounce(func, wait, immediate) {
+      let timeout;
+      return function() {
+          let context = this, args = arguments;
+          let later = function() {
+              timeout = null;
+              if (!immediate) func.apply(context, args);
+          };
+          let callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+      };
+  };
+    $("#mylist").focus();
+    $("#mylist").on('keyup', debounce(function() {
+      const book = $("#mylist").val();
+      $.get({
+        url: `https://www.googleapis.com/books/v1/volumes?q=`+ book + `&fields=items(
+          volumeInfo/authors,
+          volumeInfo/description,
+          volumeInfo/categories,
+          volumeInfo/averageRating,
+          volumeInfo/imageLinks,
+          volumeInfo/publisher,
+          volumeInfo/publishedDate,
+          volumeInfo/title)&maxResults=8&key=<%= ENV['BOOKS_API_KEY'] %>`,
+        success: function(response) {
+            const list = makeList(response.items)
+            new Awesomplete(document.querySelector("#mylist"),{
+              
+            // text below is the created suggestion html from createSuggestionHTML
+            list: list,
+            replace: function(text) {
+            const $suggestion = $(text.label);
+            const title = $suggestion.find('.suggestion-title').text();
+            this.input.value = title;
               const author = $suggestion.find('.suggestion-author').text();
               output = author.replace(/,/g, ', ')
               $('#author').val(output);
-  
+
               const cover = $suggestion.find('.suggestion-cover').text();
               $('#cover').val(cover);
-  
+
               const img = $suggestion.find('.suggestion-img').attr('src');
               $("#image2").attr("src", img);
-  
+
               const category = $suggestion.find('.suggestion-category').text();
               $('#category').val(category);
               
               const rating = $suggestion.find('.suggestion-rate').text();
               $('#rating').val(rating);
-  
+
               const publisher = $suggestion.find('.suggestion-publisher').text();
               $('#publisher').val(publisher);
-  
+
               const pub_date = $suggestion.find('.suggestion-pub_date').text();
               $('#pub_date').val(pub_date);
-  
+
               const description = $suggestion.find('.suggestion-description').text();
               $('#description').val(description);
-            }
-          });
-        }
-    });
-  }, 300))
+              }
+            });
+          }
+      });
+    }, 300))
   });
 </script>
-  <%= render 'layouts/footer' %>
 </body>
 </html>
