@@ -15,7 +15,7 @@ There are multiple goals to this project:
 
 ## Home 
 ![homepage](https://user-images.githubusercontent.com/48977789/72626505-13077980-3908-11ea-8ecc-eba015d6fd59.png)
-## Browse Books 
+## <u>Browse Books</u> 
 ![book_list](https://user-images.githubusercontent.com/48977789/72626513-1864c400-3908-11ea-85d2-29c6ed416c80.png)
 ## Refine Search 
 ![search](https://user-images.githubusercontent.com/48977789/72626535-24508600-3908-11ea-9198-9c9cfe9b64c5.png)
