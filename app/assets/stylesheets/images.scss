@@ -1,0 +1,28 @@
+.uploaded_img {
+  margin: 20px;
+}
+
+#image2 {
+  -webkit-filter: drop-shadow(10px 10px 7px #6b676b);
+  filter: drop-shadow(10px 10px 7px #6b676b);
+}
+
+#book_cover_img {
+  -webkit-filter: drop-shadow(7px 7px 7px #6b676b);
+    filter: drop-shadow(7px 7px 7px #6b676b);
+    height: 12rem;
+    width: 8rem;
+    
+    margin-top: 5px;
+}
+
+.book_image_img {
+  -webkit-filter: drop-shadow(10px 10px 7px #6b676b);
+    filter: drop-shadow(10px 10px 7px #6b676b);
+    margin-top: 40px;
+}
+
+.suggestion-img {
+  width: 60px;
+  height: 80px;
+}
