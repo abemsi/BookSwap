@@ -11171,15 +11171,7 @@ Copyright © 2018 Basecamp, LLC
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
-
-
-
-<<<<<<< HEAD
 //= require_tree .
 //= require popper
 //= require bootstrap-sprockets
-=======
 
->>>>>>> e836bbc2ea4a8cdcda7884ffb940c7f9e721f359
-;

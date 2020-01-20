@@ -1,43 +1,37 @@
 <div class="login">
-
 <section>
-
-<h1 class="display-5">Sign up</h1>
+  <h1 class="display-5">Sign up</h1>
   <div class="row">
-  <div class="col-40 col-sm-offset-1">
-    <%= form_for :user, url: '/users' do |form| %>
-
-      <% if @user.errors.any? %>
-        <% @user.errors.full_messages.each do |msg| %>
-          <div class="alert alert-danger" role="alert">
-            <%= msg %>
+    <div class="col-40 col-sm-offset-1">
+      <%= form_for :user, url: '/users' do |form| %>
+        <% if @user.errors.any? %>
+          <% @user.errors.full_messages.each do |msg| %>
+            <div class="alert alert-danger" role="alert">
+              <%= msg %>
+            </div>
+          <% end %>
+          <% end %>
+          <div class="form-group" role='search'>
+            <%= form.label :name %>
+            <%= form.search_field :name, class: 'form-control' %>
           </div>
+
+          <div class="form-group">
+            <%= form.label :email %>
+            <%= form.text_field :email, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :password %>
+            <%= form.password_field :password, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :password_confirmation %>
+            <%= form.password_field :password_confirmation, class: 'form-control'%>
+          </div>
+          <%= form.submit 'Submit', class: 'btn btn-primary' %>
         <% end %>
-      <% end %>
-
-        <div class="form-group" role='search'>
-          <%= form.label :name %>
-          <%= form.search_field :name, class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= form.label :email %>
-          <%= form.text_field :email, class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= form.label :password %>
-          <%= form.password_field :password, class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= form.label :password_confirmation %>
-          <%= form.password_field :password_confirmation, class: 'form-control'%>
-        </div>
-
-        <%= form.submit 'Submit', class: 'btn btn-primary' %>
-      <% end %>
     </div>
   </div>
-
 </section>

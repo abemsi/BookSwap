@@ -4,7 +4,6 @@ class ConversationsController < ApplicationController
   def index
     @conversations = Conversation.where(sender_id: current_user.id)
     @conversations += Conversation.joins(:book).where(books: { user_id: current_user.id })
-
   end
 
   def create
@@ -24,9 +23,7 @@ class ConversationsController < ApplicationController
   end
 
   private
-  
     def conversation_params
       params.permit(:sender_id, :book_id)
     end
-
 end
